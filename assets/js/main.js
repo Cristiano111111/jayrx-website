@@ -39,21 +39,6 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
   window.location.href = mailto;
 });
 
-// Autoplay video on scroll into view
-const showreelVideo = document.getElementById('showreelVideo');
-if (showreelVideo) {
-  const videoObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        showreelVideo.play();
-      } else {
-        showreelVideo.pause();
-      }
-    });
-  }, { threshold: 0.5 });
-  videoObserver.observe(showreelVideo);
-}
-
 // Nav shadow on scroll
 window.addEventListener('scroll', () => {
   const nav = document.getElementById('nav');
