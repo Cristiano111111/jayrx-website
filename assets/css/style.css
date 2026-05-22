@@ -470,6 +470,109 @@ body {
   font-size: 0.82rem;
 }
 
+/* BRAND SCALING CARD */
+.package-scaling {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  align-items: center;
+  gap: 0;
+  padding: 40px 48px;
+  background: linear-gradient(135deg, rgba(168,85,247,0.08) 0%, rgba(56,189,248,0.05) 100%);
+  border-color: rgba(168,85,247,0.3);
+  margin-top: 8px;
+}
+
+.package-scaling:hover {
+  border-color: rgba(168,85,247,0.55);
+}
+
+.scaling-left {
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-right: 48px;
+  border-right: 1px solid var(--border);
+}
+
+.scaling-tag {
+  display: inline-block;
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.scaling-left h3 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.5px;
+  margin: 0;
+}
+
+.scaling-desc {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  max-width: 280px;
+}
+
+.scaling-center {
+  flex: 1.4;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0 48px;
+}
+
+.scaling-price {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.scaling-price .price-num {
+  font-size: 3rem;
+  background: linear-gradient(130deg, #c084fc 0%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.scaling-right {
+  flex: 0.8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding-left: 48px;
+  border-left: 1px solid var(--border);
+}
+
+.scaling-note {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+@media (max-width: 1024px) {
+  .package-scaling {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 32px 28px;
+    gap: 28px;
+  }
+  .scaling-left, .scaling-center, .scaling-right {
+    width: 100%;
+    padding: 0;
+    border: none;
+  }
+  .scaling-desc { max-width: 100%; }
+  .scaling-right { align-items: flex-start; }
+}
+
 /* CUSTOM CTA BAR */
 .custom-cta-bar {
   margin-top: 56px;
