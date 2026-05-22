@@ -39,21 +39,6 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
   window.location.href = mailto;
 });
 
-// Delayed audio fade-in for showreel
-const showreelVideo = document.getElementById('showreelVideo');
-if (showreelVideo) {
-  showreelVideo.addEventListener('play', () => {
-    setTimeout(() => {
-      showreelVideo.muted = false;
-      showreelVideo.volume = 0;
-      const fade = setInterval(() => {
-        showreelVideo.volume = Math.min(showreelVideo.volume + 0.04, 1);
-        if (showreelVideo.volume >= 1) clearInterval(fade);
-      }, 50);
-    }, 2000);
-  }, { once: true });
-}
-
 // Nav shadow on scroll
 window.addEventListener('scroll', () => {
   const nav = document.getElementById('nav');
