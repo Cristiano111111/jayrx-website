@@ -1,173 +1,564 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>jayrx — AI Receptionist & Lead Management</title>
-  <meta name="description" content="Custom AI receptionists that capture every lead and sync to the platforms you already use." />
-  <link rel="stylesheet" href="assets/css/style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rabbit Power Washing — Rockville & Montgomery County MD</title>
+<meta name="description" content="Professional pressure washing in Rockville, Clarksburg & Montgomery County MD. Driveways, house washing, concrete, fences. Free flat-rate quotes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<style>
+/* ── Hero ─────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-top: calc(var(--nav-top) + var(--nav-h) + 3rem);
+  padding-bottom: 5rem;
+}
+.hero-bg { position: absolute; inset: 0; z-index: 0; }
+.hero-texture-dirty {
+  position: absolute; inset: 0;
+  background: #38301f;
+  filter: url(#f-dirty);
+}
+.hero-texture-clean {
+  position: absolute; inset: 0;
+  background: #b8b4aa;
+  filter: url(#f-clean);
+  clip-path: polygon(62% 0%, 100% 0%, 100% 100%, 52% 100%);
+  opacity: 0.9;
+}
+.hero-beam {
+  position: absolute; top: 0; bottom: 0; left: 56%;
+  width: 80px;
+  background: linear-gradient(to right, transparent, rgba(60,170,255,0.55), rgba(200,240,255,0.9), rgba(60,170,255,0.55), transparent);
+  transform: rotate(3deg) translateX(-50%);
+  filter: blur(4px);
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(105deg, rgba(8,14,8,0.82) 0%, rgba(8,14,8,0.70) 42%, rgba(8,14,8,0.20) 68%, rgba(8,14,8,0.04) 100%);
+}
+#heroCanvas {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  opacity: 0.85;
+}
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: 1200px; margin: 0 auto;
+  padding: 0 5vw; width: 100%;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em;
+  text-transform: uppercase; color: rgba(255,255,255,0.5);
+  margin-bottom: 1.4rem;
+}
+.hero-eyebrow-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--water);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.8)} }
+.hero-h1 {
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-weight: 900;
+  font-size: clamp(4.2rem, 11vw, 10rem);
+  line-height: 0.88; letter-spacing: -0.01em;
+  color: #fff; text-wrap: balance; margin-bottom: 0.2em;
+}
+.hero-h1 .blue { color: var(--water); }
+.hero-sub {
+  font-size: clamp(1rem, 2vw, 1.3rem); font-weight: 400;
+  color: rgba(255,255,255,0.62); max-width: 440px;
+  line-height: 1.55; margin: 1.6rem 0 2.4rem;
+}
+.hero-actions { display: flex; flex-wrap: wrap; gap: 0.9rem; align-items: center; }
+.hero-actions .btn { font-size: 0.95rem; padding: 0.9rem 2rem; }
+.hero-phone {
+  font-size: 1rem; font-weight: 600;
+  color: rgba(255,255,255,0.55); transition: color 0.15s;
+}
+.hero-phone:hover { color: #fff; }
+.hero-badges {
+  display: flex; flex-wrap: wrap; gap: 1.5rem;
+  margin-top: 3.5rem; padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.hero-badge {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-size: 0.78rem; font-weight: 500;
+  color: rgba(255,255,255,0.45);
+}
+
+/* ── Stats strip ──────────────────────────────────────── */
+.stats-strip { background: var(--deep); padding: 3rem 5vw; }
+.stats-grid {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(3,1fr);
+  border: 1px solid rgba(255,255,255,0.07); border-radius: 4px; overflow: hidden;
+}
+.stat-item {
+  padding: 2.5rem 2rem; text-align: center;
+  border-right: 1px solid rgba(255,255,255,0.07);
+}
+.stat-item:last-child { border-right: none; }
+.stat-num {
+  font-family: 'Big Shoulders Display', sans-serif; font-weight: 900;
+  font-size: clamp(2.8rem, 5vw, 4rem);
+  color: var(--water); line-height: 1; display: block; margin-bottom: 0.35rem;
+}
+.stat-label {
+  font-size: 0.8rem; font-weight: 500;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.06em; text-transform: uppercase;
+}
+
+/* ── Services ─────────────────────────────────────────── */
+.services-sec { background: var(--stone); }
+.services-grid {
+  display: grid; grid-template-columns: repeat(2,1fr);
+  gap: 1.25rem; margin-top: 0;
+}
+.service-card {
+  background: #fff; border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 6px; padding: 2.2rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.service-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
+.service-icon {
+  width: 44px; height: 44px;
+  background: linear-gradient(135deg, var(--water) 0%, #5290ff 100%);
+  border-radius: 8px; display: flex; align-items: center;
+  justify-content: center; margin-bottom: 1.2rem;
+}
+.service-icon svg { width: 22px; height: 22px; fill: #fff; }
+.service-card h3 {
+  font-family: 'Big Shoulders Display', sans-serif; font-weight: 900;
+  font-size: 1.4rem; letter-spacing: -0.01em;
+  margin-bottom: 0.5rem; color: var(--deep);
+}
+.service-card p { font-size: 0.88rem; color: var(--text-2); line-height: 1.6; margin-bottom: 1.2rem; }
+.service-link {
+  font-size: 0.82rem; font-weight: 600; color: var(--water);
+  letter-spacing: 0.04em; transition: letter-spacing 0.15s;
+  display: inline-flex; align-items: center; gap: 0.3rem;
+}
+.service-link:hover { letter-spacing: 0.06em; }
+
+/* ── Before/After ─────────────────────────────────────── */
+.ba-sec { background: var(--deep); padding: 6rem 5vw; }
+.ba-intro {
+  color: rgba(255,255,255,0.45); font-size: 0.9rem;
+  max-width: 500px; margin-top: 0.8rem; line-height: 1.6;
+}
+.ba-wrap {
+  position: relative; border-radius: 8px; overflow: hidden;
+  user-select: none; cursor: col-resize;
+  max-width: 900px; aspect-ratio: 16/8; margin-top: 3rem;
+}
+.ba-before { position: absolute; inset: 0; background: #3d3524; filter: url(#f-dirty-ba); }
+.ba-after  { position: absolute; inset: 0; background: #bbb7af; filter: url(#f-clean-ba); clip-path: inset(0 50% 0 0); }
+.ba-label {
+  position: absolute; top: 1rem; font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 0.3rem 0.65rem; border-radius: 3px; z-index: 5;
+}
+.ba-label-before { left: 1rem; background: rgba(0,0,0,0.6); color: rgba(255,255,255,0.7); }
+.ba-label-after  { right: 1rem; background: rgba(27,98,232,0.85); color: #fff; }
+.ba-divider {
+  position: absolute; top: 0; bottom: 0; left: 50%;
+  width: 3px; background: var(--water); z-index: 4;
+  transform: translateX(-50%);
+  box-shadow: 0 0 12px rgba(27,98,232,0.8);
+}
+.ba-handle {
+  position: absolute; top: 50%; left: 50%;
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--water); border: 3px solid #fff;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  transform: translate(-50%,-50%); z-index: 5;
+  display: flex; align-items: center; justify-content: center;
+}
+.ba-handle svg { width: 18px; height: 18px; stroke: #fff; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ── Reasons ──────────────────────────────────────────── */
+.reasons-sec { background: var(--stone); }
+.reasons-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; margin-top: 3rem; }
+.reason-card { display: flex; flex-direction: column; gap: 0.75rem; }
+.reason-num {
+  font-family: 'Big Shoulders Display', sans-serif; font-weight: 900;
+  font-size: 2.4rem; color: var(--water); line-height: 1; opacity: 0.3;
+}
+.reason-card h3 {
+  font-family: 'Big Shoulders Display', sans-serif; font-weight: 900;
+  font-size: 1.25rem; color: var(--deep);
+}
+.reason-card p { font-size: 0.88rem; color: var(--text-2); line-height: 1.6; }
+
+/* ── CTA strip ────────────────────────────────────────── */
+.cta-strip { background: var(--water); padding: 5rem 5vw; text-align: center; }
+.cta-strip p { color: rgba(255,255,255,0.72); font-size: 1rem; max-width: 480px; margin: 0.6rem auto 2rem; }
+.cta-actions { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+
+/* ── Responsive ───────────────────────────────────────── */
+@media (max-width: 900px) { .reasons-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
+@media (max-width: 700px) {
+  .services-grid { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: 1fr; }
+  .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .stat-item:last-child { border-bottom: none; }
+  .ba-wrap { aspect-ratio: 4/3; }
+}
+</style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav class="nav" id="nav">
-    <div class="nav-inner">
-      <a href="#" class="logo">jayrx</a>
-      <ul class="nav-links">
-        <li><a href="#how">How It Works</a></li>
-        <li><a href="#integrations">Integrations</a></li>
-        <li><a href="#packages">Pricing</a></li>
-        <li><a href="#contact" class="nav-cta">Get Started</a></li>
-      </ul>
-      <button class="hamburger" id="hamburger" aria-label="Menu">
+<!-- ── SVG Filter Definitions ─────────────────────────── -->
+<svg width="0" height="0" style="position:absolute;pointer-events:none;overflow:hidden" aria-hidden="true">
+  <defs>
+    <filter id="f-dirty" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.72 0.52" numOctaves="5" seed="3" stitchTiles="stitch" result="t"/>
+      <feComponentTransfer in="t">
+        <feFuncR type="linear" slope="0.22" intercept="0.10"/>
+        <feFuncG type="linear" slope="0.18" intercept="0.08"/>
+        <feFuncB type="linear" slope="0.12" intercept="0.04"/>
+        <feFuncA type="linear" slope="0" intercept="1"/>
+      </feComponentTransfer>
+    </filter>
+    <filter id="f-clean" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.60 0.44" numOctaves="4" seed="9" stitchTiles="stitch" result="t"/>
+      <feComponentTransfer in="t">
+        <feFuncR type="linear" slope="0.14" intercept="0.64"/>
+        <feFuncG type="linear" slope="0.13" intercept="0.62"/>
+        <feFuncB type="linear" slope="0.11" intercept="0.58"/>
+        <feFuncA type="linear" slope="0" intercept="1"/>
+      </feComponentTransfer>
+    </filter>
+    <filter id="f-dirty-ba" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.78 0.56" numOctaves="6" seed="12" stitchTiles="stitch" result="t"/>
+      <feComponentTransfer in="t">
+        <feFuncR type="linear" slope="0.24" intercept="0.09"/>
+        <feFuncG type="linear" slope="0.20" intercept="0.07"/>
+        <feFuncB type="linear" slope="0.14" intercept="0.04"/>
+        <feFuncA type="linear" slope="0" intercept="1"/>
+      </feComponentTransfer>
+    </filter>
+    <filter id="f-clean-ba" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.63 0.46" numOctaves="5" seed="19" stitchTiles="stitch" result="t"/>
+      <feComponentTransfer in="t">
+        <feFuncR type="linear" slope="0.12" intercept="0.68"/>
+        <feFuncG type="linear" slope="0.11" intercept="0.66"/>
+        <feFuncB type="linear" slope="0.09" intercept="0.62"/>
+        <feFuncA type="linear" slope="0" intercept="1"/>
+      </feComponentTransfer>
+    </filter>
+  </defs>
+</svg>
+
+<!-- ── Liquid Glass Pill Nav ──────────────────────────── -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="Rabbit Power Washing home">
+      <img src="images/logo.png" alt="Rabbit Power Washing" class="nav-logo-img"
+           onerror="this.style.display='none';document.getElementById('logoFallback').style.display='flex'">
+      <span class="nav-logo-fallback" id="logoFallback">
+        <span class="nav-logo-mark">🐇</span>
+        RABBIT POWER WASHING
+      </span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="tel:3017997475" class="nav-phone">301-799-7475</a>
+      <a href="contact.html" class="nav-cta">Free Quote</a>
+      <button class="nav-burger" id="burger" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
     </div>
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="#how" class="mobile-link">How It Works</a>
-      <a href="#integrations" class="mobile-link">Integrations</a>
-      <a href="#packages" class="mobile-link">Pricing</a>
-      <a href="#contact" class="mobile-link mobile-cta">Get Started</a>
-    </div>
-  </nav>
+  </div>
+</nav>
 
-  <!-- HERO -->
-  <section class="hero" id="home">
-    <div class="hero-bg"></div>
-    <div class="container hero-content">
-      <div class="hero-badge">AI Receptionist &amp; Lead Management</div>
-      <h1 class="hero-title">Never Miss<br /><span class="gradient-text">a Lead Again</span></h1>
-      <p class="hero-sub">We build a custom AI receptionist for your business — connected to whatever platform you use to manage leads.</p>
-      <a href="#contact" class="btn btn-primary">Get Started</a>
+<!-- ── Hero ───────────────────────────────────────────── -->
+<section class="hero" id="top">
+  <div class="hero-bg">
+    <div class="hero-texture-dirty"></div>
+    <div class="hero-texture-clean"></div>
+    <div class="hero-beam"></div>
+    <div class="hero-overlay"></div>
+    <canvas id="heroCanvas"></canvas>
+  </div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">
+      <span class="hero-eyebrow-dot"></span>
+      Rockville &amp; Montgomery County, MD
+    </p>
+    <h1 class="hero-h1">
+      WE MAKE<br>IT LOOK<br><span class="blue">NEW AGAIN</span>
+    </h1>
+    <p class="hero-sub">
+      Professional pressure washing that restores your property's curb appeal. Flat-rate pricing — no surprises.
+    </p>
+    <div class="hero-actions">
+      <a href="contact.html" class="btn btn-blue">Get a Free Quote</a>
+      <a href="gallery.html" class="btn btn-ghost">See Our Work</a>
+      <a href="tel:3017997475" class="hero-phone">📞 301-799-7475</a>
     </div>
-    <div class="scroll-indicator">
-      <div class="scroll-dot"></div>
+    <div class="hero-badges">
+      <span class="hero-badge">✔ Licensed &amp; Insured</span>
+      <span class="hero-badge">✔ Same-Week Scheduling</span>
+      <span class="hero-badge">✔ 100% Satisfaction Guarantee</span>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- HOW IT WORKS -->
-  <section class="section section-dark" id="how">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Process</span>
-        <h2>How It Works</h2>
-        <p>Up and running in days, not months.</p>
-      </div>
-      <div class="steps-grid">
+<!-- ── Stats Strip ─────────────────────────────────────── -->
+<section class="stats-strip">
+  <div class="stats-grid">
+    <div class="stat-item rv"><span class="stat-num">500+</span><span class="stat-label">Jobs Completed</span></div>
+    <div class="stat-item rv" style="transition-delay:.1s"><span class="stat-num">12+</span><span class="stat-label">Cities Served</span></div>
+    <div class="stat-item rv" style="transition-delay:.2s"><span class="stat-num">5★</span><span class="stat-label">Average Rating</span></div>
+  </div>
+</section>
 
-        <div class="step-card">
-          <div class="step-num">01</div>
-          <h3>We Build Your AI</h3>
-          <p>Custom trained on your business — your services, brand voice, FAQs, and how you want leads handled.</p>
+<!-- ── Services ───────────────────────────────────────── -->
+<section class="sec services-sec">
+  <div class="sec-inner">
+    <div class="sec-head rv">
+      <span class="eyebrow">What We Clean</span>
+      <h2 class="disp disp-lg">Our Services</h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card rv" style="transition-delay:.05s">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 17h18v2H3v-2zm0-5h18v2H3v-2zM3 7h18v2H3V7z"/></svg>
         </div>
-
-        <div class="step-divider"></div>
-
-        <div class="step-card">
-          <div class="step-num">02</div>
-          <h3>We Connect Everything</h3>
-          <p>Synced directly to your CRM, spreadsheet, or any platform you already use. No switching tools.</p>
+        <h3>Driveway Cleaning</h3>
+        <p>Oil stains, tire marks, algae, and mildew disappear with our high-pressure hot wash. Most driveways done in under 2 hours.</p>
+        <a href="contact.html" class="service-link">Get a quote →</a>
+      </div>
+      <div class="service-card rv" style="transition-delay:.10s">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
         </div>
-
-        <div class="step-divider"></div>
-
-        <div class="step-card">
-          <div class="step-num">03</div>
-          <h3>Leads Flow In</h3>
-          <p>Every call, message, and inquiry is captured, organized, and ready for you to close — automatically.</p>
+        <h3>House Washing</h3>
+        <p>Soft-wash removes dirt, mold, and mildew from vinyl, brick, and stucco without damaging your siding or paint.</p>
+        <a href="contact.html" class="service-link">Get a quote →</a>
+      </div>
+      <div class="service-card rv" style="transition-delay:.15s">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M2 6h20v2H2V6zm0 5h20v2H2v-2zm0 5h20v2H2v-2z"/></svg>
         </div>
-
+        <h3>Concrete Flatwork</h3>
+        <p>Sidewalks, pool decks, patios, and parking pads restored to original color. Surface sealing available on request.</p>
+        <a href="contact.html" class="service-link">Get a quote →</a>
       </div>
-    </div>
-  </section>
-
-  <!-- INTEGRATIONS -->
-  <section class="section" id="integrations">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Integrations</span>
-        <h2>Works With What You Use</h2>
-        <p>We connect your AI receptionist to the platforms you already rely on.</p>
-      </div>
-      <div class="integrations-grid">
-        <div class="integration-pill">Google Sheets</div>
-        <div class="integration-pill">GoHighLevel</div>
-        <div class="integration-pill">HubSpot</div>
-        <div class="integration-pill">Airtable</div>
-        <div class="integration-pill">Notion</div>
-        <div class="integration-pill">Slack</div>
-        <div class="integration-pill">Zapier</div>
-        <div class="integration-pill">Make</div>
-        <div class="integration-pill">Salesforce</div>
-        <div class="integration-pill">Zoho CRM</div>
-        <div class="integration-pill">Monday.com</div>
-        <div class="integration-pill">Google Calendar</div>
-        <div class="integration-pill">Calendly</div>
-        <div class="integration-pill">WhatsApp</div>
-        <div class="integration-pill">+ More</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PACKAGES -->
-  <section class="section section-dark" id="packages">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Pricing</span>
-        <h2>Find Your Fit</h2>
-        <p>Every build is custom. Pricing depends on your setup — reach out and we'll figure it out together.</p>
-      </div>
-      <div class="single-pricing">
-        <div class="single-pricing-inner">
-          <h3>Every build is custom.</h3>
-          <p>Pricing depends on your business, integrations, and what you need. Reach out and we'll figure it out together — no pressure.</p>
-          <a href="#contact" class="btn btn-primary">Contact Sales</a>
+      <div class="service-card rv" style="transition-delay:.20s">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 3v18H2V3h2zm4 0v4H6V3h2zm0 6v4H6V9h2zm0 6v6H6v-6h2zm4-12v4h-2V3h2zm0 6v4h-2V9h2zm0 6v6h-2v-6h2zm4-12v4h-2V3h2zm0 6v4h-2V9h2zm0 6v6h-2v-6h2zm4-12v18h-2V3h2z"/></svg>
         </div>
+        <h3>Fence Washing</h3>
+        <p>Wood, vinyl, and chain-link fences cleaned and brightened. Removes green algae, grey weathering, and black mold.</p>
+        <a href="contact.html" class="service-link">Get a quote →</a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-
-  <!-- CONTACT -->
-  <section class="section section-dark" id="contact">
-    <div class="container contact-container">
-      <div class="contact-left">
-        <span class="section-tag">Contact</span>
-        <h2>Let's Build Your<br />AI Receptionist</h2>
-        <p>Tell me about your business and I'll get back to you within 24 hours.</p>
-        <a href="mailto:jayrx16@gmail.com" class="contact-email">jayrx16@gmail.com</a>
+<!-- ── Before / After ─────────────────────────────────── -->
+<section class="ba-sec">
+  <div class="sec-inner">
+    <div class="sec-head rv">
+      <span class="eyebrow" style="color:rgba(255,255,255,0.35)">The Difference</span>
+      <h2 class="disp disp-lg" style="color:#fff">Before <span class="blue">&amp;</span> After</h2>
+      <p class="ba-intro">Drag the handle to see the transformation. Every job, every time.</p>
+    </div>
+    <div class="ba-wrap rv" id="baSlider" style="transition-delay:.15s">
+      <div class="ba-before"></div>
+      <div class="ba-after" id="baAfter"></div>
+      <span class="ba-label ba-label-before">BEFORE</span>
+      <span class="ba-label ba-label-after">AFTER</span>
+      <div class="ba-divider" id="baDivider"></div>
+      <div class="ba-handle" id="baHandle">
+        <svg viewBox="0 0 20 20"><polyline points="6,4 2,10 6,16"/><polyline points="14,4 18,10 14,16"/></svg>
       </div>
-      <form class="contact-form" id="contactForm">
-        <div class="form-row">
-          <input type="text" name="name" placeholder="Your Name" required />
-          <input type="email" name="email" placeholder="Your Email" required />
-        </div>
-        <select name="package">
-          <option value="" disabled selected>Which plan interests you?</option>
-          <option value="starter">Starter</option>
-          <option value="professional">Professional</option>
-          <option value="enterprise">Enterprise</option>
-          <option value="custom">Not Sure Yet</option>
-        </select>
-        <textarea name="message" placeholder="Tell me about your business and what you need..." rows="5" required></textarea>
-        <button type="submit" class="btn btn-primary btn-full">Send Message</button>
-        <p class="form-note">No spam. No sales pitch. Just a real conversation.</p>
-      </form>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container footer-inner">
-      <span class="logo">jayrx</span>
-      <p>© 2026 jayrx. All rights reserved.</p>
-      <a href="mailto:jayrx16@gmail.com">jayrx16@gmail.com</a>
+<!-- ── Why Rabbit ─────────────────────────────────────── -->
+<section class="sec reasons-sec">
+  <div class="sec-inner">
+    <div class="sec-head rv">
+      <span class="eyebrow">Why Choose Us</span>
+      <h2 class="disp disp-lg">Built on Results,<br>Not Promises</h2>
     </div>
-  </footer>
+    <div class="reasons-grid">
+      <div class="reason-card rv">
+        <span class="reason-num">01</span>
+        <h3>Flat-Rate Pricing</h3>
+        <p>We give you one number upfront. No hourly surprises, no add-ons. Know exactly what you're paying before we start.</p>
+      </div>
+      <div class="reason-card rv" style="transition-delay:.12s">
+        <span class="reason-num">02</span>
+        <h3>Local Montgomery County Team</h3>
+        <p>We live and work in the same communities we serve — Rockville, Clarksburg, Gaithersburg, and beyond.</p>
+      </div>
+      <div class="reason-card rv" style="transition-delay:.24s">
+        <span class="reason-num">03</span>
+        <h3>Done Right or We Come Back</h3>
+        <p>If you're not satisfied, we return and fix it — no questions, no argument. That's the Rabbit guarantee.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <script src="assets/js/main.js"></script>
+<!-- ── CTA Strip ──────────────────────────────────────── -->
+<section class="cta-strip">
+  <div class="sec-inner">
+    <h2 class="disp disp-lg rv" style="color:#fff">Ready to See the Difference?</h2>
+    <p class="rv" style="transition-delay:.1s">Most quotes back within the hour. Scheduling available this week.</p>
+    <div class="cta-actions rv" style="transition-delay:.2s">
+      <a href="contact.html" class="btn btn-white">Get a Free Quote</a>
+      <a href="tel:3017997475" class="btn btn-ghost">Call 301-799-7475</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ─────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="footer-inner">
+    <span class="footer-logo">🐇 RABBIT POWER WASHING</span>
+    <div class="footer-right">
+      <span>© 2025 Rabbit Power Washing. Rockville, MD.</span>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+      <a href="tel:3017997475">301-799-7475</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── Page transitions ─────────────────────────────────── */
+document.querySelectorAll('a[href]').forEach(a => {
+  const href = a.getAttribute('href');
+  if (!href || href.startsWith('#') || href.startsWith('tel:') || href.startsWith('mailto:')) return;
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    document.body.style.transition = 'opacity 0.22s ease, transform 0.22s ease';
+    document.body.style.opacity = '0';
+    document.body.style.transform = 'translateY(-8px)';
+    setTimeout(() => { window.location.href = href; }, 210);
+  });
+});
+
+/* ── Scroll reveal ────────────────────────────────────── */
+const io = new IntersectionObserver(entries =>
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }),
+  { threshold: 0.12 }
+);
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+/* ── Hero spray canvas ────────────────────────────────── */
+(function() {
+  const canvas = document.getElementById('heroCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H;
+  function resize() {
+    W = canvas.width  = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const BEAM = 0.57;
+  const MAX = 140;
+  const pts = [];
+  function mkPt() {
+    return {
+      x: W * BEAM + (Math.random() - 0.5) * 10,
+      y: Math.random() * H,
+      vx: (Math.random() * 3.5 + 0.8) * (Math.random() > 0.35 ? 1 : -0.4),
+      vy: (Math.random() - 0.5) * 2.5,
+      life: Math.random(),
+      decay: 0.016 + Math.random() * 0.024,
+      r: 0.5 + Math.random() * 2.2,
+      bright: Math.random() > 0.55
+    };
+  }
+  for (let i = 0; i < MAX; i++) pts.push(mkPt());
+
+  function frame() {
+    ctx.clearRect(0, 0, W, H);
+    pts.forEach((p, i) => {
+      p.x += p.vx; p.y += p.vy; p.vy += 0.045; p.life -= p.decay;
+      if (p.life <= 0 || p.x < 0 || p.x > W || p.y < 0 || p.y > H) { pts[i] = mkPt(); return; }
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      const a = p.life * 0.7;
+      ctx.fillStyle = p.bright ? `rgba(200,230,255,${a})` : `rgba(90,170,255,${a * 0.65})`;
+      ctx.fill();
+    });
+    requestAnimationFrame(frame);
+  }
+  frame();
+})();
+
+/* ── Before / After slider ────────────────────────────── */
+(function() {
+  const wrap    = document.getElementById('baSlider');
+  const after   = document.getElementById('baAfter');
+  const divider = document.getElementById('baDivider');
+  const handle  = document.getElementById('baHandle');
+  if (!wrap) return;
+  let dragging = false;
+
+  function setPos(x) {
+    const rect = wrap.getBoundingClientRect();
+    const pct = Math.max(3, Math.min(97, (x - rect.left) / rect.width * 100));
+    after.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
+    divider.style.left = pct + '%';
+    handle.style.left  = pct + '%';
+  }
+
+  window.addEventListener('load', () => {
+    const rect = wrap.getBoundingClientRect();
+    setPos(rect.left + rect.width * 0.5);
+  });
+
+  wrap.addEventListener('mousedown',  e => { dragging = true; setPos(e.clientX); });
+  document.addEventListener('mouseup',   () => { dragging = false; });
+  document.addEventListener('mousemove', e => { if (dragging) setPos(e.clientX); });
+  wrap.addEventListener('touchstart',  e => { dragging = true; setPos(e.touches[0].clientX); }, { passive: true });
+  document.addEventListener('touchend', () => { dragging = false; });
+  document.addEventListener('touchmove', e => { if (dragging) setPos(e.touches[0].clientX); }, { passive: true });
+})();
+
+/* ── Mobile nav ───────────────────────────────────────── */
+const burger = document.getElementById('burger');
+const mLinks = document.querySelector('.nav-links');
+if (burger && mLinks) {
+  burger.addEventListener('click', () => {
+    const open = mLinks.classList.toggle('nav-mobile-open');
+    if (open) {
+      mLinks.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:calc(100% + 0.6rem);left:0;right:0;background:rgba(10,16,10,0.97);backdrop-filter:blur(20px);padding:1.5rem;gap:0.5rem;border-radius:12px;border:1px solid rgba(255,255,255,0.1)';
+    } else {
+      mLinks.style.cssText = '';
+    }
+  });
+}
+</script>
 </body>
 </html>
