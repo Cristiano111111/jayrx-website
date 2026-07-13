@@ -95,6 +95,19 @@
 }
 .ba-mini-handle svg { width: 14px; height: 14px; stroke: #fff; fill: none; stroke-width: 2.5; stroke-linecap: round; }
 
+/* ── Real photo cards ─────────────────────────────────── */
+.photo-card-img {
+  margin: 1rem;
+  border-radius: 6px;
+  overflow: hidden;
+  aspect-ratio: 3/2;
+}
+.photo-card-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 /* ── Section separator ────────────────────────────────── */
 .gallery-divider {
   display: flex; align-items: center; gap: 1.5rem;
@@ -278,54 +291,46 @@
 
     <div class="gallery-divider rv"><span>Driveways &amp; Concrete</span></div>
 
-    <div class="ba-pair-grid">
-      <!-- Driveway 1 -->
+    <!-- Real photo grid: driveway + siding -->
+    <div class="ba-pair-grid photo-pair-grid">
+      <!-- Driveway real photo -->
       <div class="ba-card rv">
         <div class="ba-card-label">
           <h3>Residential Driveway</h3>
           <p>Rockville, MD — Oil &amp; tire stain removal</p>
         </div>
-        <div class="ba-mini" data-dirty="f-drv-d" data-clean="f-drv-c" data-dirty-bg="#362d1a" data-clean-bg="#c5c1b9">
-          <div class="ba-mini-before"></div>
-          <div class="ba-mini-after"></div>
-          <span class="ba-mini-label before">BEFORE</span>
-          <span class="ba-mini-label after">AFTER</span>
-          <div class="ba-mini-divider"></div>
-          <div class="ba-mini-handle">
-            <svg viewBox="0 0 14 14"><polyline points="4,2 1,7 4,12"/><polyline points="10,2 13,7 10,12"/></svg>
-          </div>
+        <div class="photo-card-img">
+          <img src="images/driveway-ba.jpg" alt="Driveway before and after pressure washing"
+               loading="lazy">
         </div>
       </div>
 
-      <!-- Driveway 2 -->
+      <!-- Siding real photo -->
       <div class="ba-card rv" style="transition-delay:.1s">
         <div class="ba-card-label">
-          <h3>Concrete Patio</h3>
-          <p>Clarksburg, MD — Algae &amp; mildew removal</p>
+          <h3>Vinyl House Siding</h3>
+          <p>Gaithersburg, MD — Full house soft wash</p>
         </div>
-        <div class="ba-mini" data-dirty="f-pat-d" data-clean="f-pat-c" data-dirty-bg="#2e2718" data-clean-bg="#c8c4bc">
-          <div class="ba-mini-before"></div>
-          <div class="ba-mini-after"></div>
-          <span class="ba-mini-label before">BEFORE</span>
-          <span class="ba-mini-label after">AFTER</span>
-          <div class="ba-mini-divider"></div>
-          <div class="ba-mini-handle">
-            <svg viewBox="0 0 14 14"><polyline points="4,2 1,7 4,12"/><polyline points="10,2 13,7 10,12"/></svg>
-          </div>
+        <div class="photo-card-img">
+          <img src="images/siding-ba.jpg" alt="House siding before and after soft wash"
+               loading="lazy">
         </div>
       </div>
     </div>
 
-    <div class="gallery-divider rv"><span>House Washing</span></div>
+    <div class="gallery-divider rv"><span>Concrete &amp; Surfaces</span></div>
 
+    <!-- Interactive sliders: concrete before/after using real close-up photos -->
     <div class="ba-pair-grid">
-      <!-- House siding -->
+      <!-- Concrete slider with real photos -->
       <div class="ba-card rv">
         <div class="ba-card-label">
-          <h3>Vinyl Siding</h3>
-          <p>Gaithersburg, MD — Full house soft wash</p>
+          <h3>Concrete Flatwork</h3>
+          <p>Clarksburg, MD — Algae &amp; grime removal</p>
         </div>
-        <div class="ba-mini" data-dirty="f-sid-d" data-clean="f-sid-c" data-dirty-bg="#4a4438" data-clean-bg="#e8e4de">
+        <div class="ba-mini photo-slider"
+             data-before="images/before-concrete.jpg"
+             data-after="images/after-concrete.jpg">
           <div class="ba-mini-before"></div>
           <div class="ba-mini-after"></div>
           <span class="ba-mini-label before">BEFORE</span>
@@ -337,7 +342,7 @@
         </div>
       </div>
 
-      <!-- Fence -->
+      <!-- Fence (SVG texture — no photo yet) -->
       <div class="ba-card rv" style="transition-delay:.1s">
         <div class="ba-card-label">
           <h3>Wood Fence</h3>
@@ -432,15 +437,21 @@ document.querySelectorAll('.ba-mini').forEach(wrap => {
   const divider = wrap.querySelector('.ba-mini-divider');
   const handle  = wrap.querySelector('.ba-mini-handle');
 
-  const dirtyId = wrap.dataset.dirty;
-  const cleanId = wrap.dataset.clean;
-  const dirtyBg = wrap.dataset.dirtyBg || '#3d3524';
-  const cleanBg = wrap.dataset.cleanBg || '#bbb7af';
-
-  before.style.background = dirtyBg;
-  before.style.filter = `url(#${dirtyId})`;
-  after.style.background = cleanBg;
-  after.style.filter = `url(#${cleanId})`;
+  // Photo-based slider (data-before / data-after)
+  if (wrap.dataset.before) {
+    before.style.cssText = `background: url('${wrap.dataset.before}') center/cover no-repeat; background-color:#3d3524;`;
+    after.style.cssText  = `background: url('${wrap.dataset.after}')  center/cover no-repeat; background-color:#bbb7af;`;
+  } else {
+    // SVG filter slider
+    const dirtyId = wrap.dataset.dirty;
+    const cleanId = wrap.dataset.clean;
+    const dirtyBg = wrap.dataset.dirtyBg || '#3d3524';
+    const cleanBg = wrap.dataset.cleanBg || '#bbb7af';
+    before.style.background = dirtyBg;
+    before.style.filter = `url(#${dirtyId})`;
+    after.style.background = cleanBg;
+    after.style.filter = `url(#${cleanId})`;
+  }
 
   let dragging = false;
 

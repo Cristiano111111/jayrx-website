@@ -165,8 +165,18 @@
   user-select: none; cursor: col-resize;
   max-width: 900px; aspect-ratio: 16/8; margin-top: 3rem;
 }
-.ba-before { position: absolute; inset: 0; background: #3d3524; filter: url(#f-dirty-ba); }
-.ba-after  { position: absolute; inset: 0; background: #bbb7af; filter: url(#f-clean-ba); clip-path: inset(0 50% 0 0); }
+.ba-before {
+  position: absolute; inset: 0;
+  background: url('images/before-concrete.jpg') center/cover no-repeat;
+  /* fallback while image loads */
+  background-color: #3d3524;
+}
+.ba-after  {
+  position: absolute; inset: 0;
+  background: url('images/after-concrete.jpg') center/cover no-repeat;
+  background-color: #bbb7af;
+  clip-path: inset(0 50% 0 0);
+}
 .ba-label {
   position: absolute; top: 1rem; font-size: 0.68rem; font-weight: 700;
   letter-spacing: 0.14em; text-transform: uppercase;
