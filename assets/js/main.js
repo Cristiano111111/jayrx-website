@@ -25,18 +25,37 @@ document.querySelectorAll('.work-card, .package-card, .review-card, .section-hea
 });
 
 // Contact form
-document.getElementById('contactForm').addEventListener('submit', function(e) {
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
   e.preventDefault();
   const btn = this.querySelector('button[type="submit"]');
-  const name = this.querySelector('[name="name"]').value;
-  btn.textContent = 'Message Sent!';
-  btn.style.background = 'linear-gradient(135deg, #059669, #10b981)';
+  const original = btn.textContent;
+  btn.textContent = 'Sending...';
   btn.disabled = true;
 
-  const mailto = `mailto:jayrx16@gmail.com?subject=New Project Inquiry from ${encodeURIComponent(name)}&body=${encodeURIComponent(
-    `Name: ${name}\nEmail: ${this.querySelector('[name="email"]').value}\nPackage: ${this.querySelector('[name="package"]').value}\n\n${this.querySelector('[name="message"]').value}`
-  )}`;
-  window.location.href = mailto;
+  const payload = {
+    name: this.querySelector('[name="name"]').value,
+    email: this.querySelector('[name="email"]').value,
+    package: this.querySelector('[name="package"]').value,
+    message: this.querySelector('[name="message"]').value,
+  };
+
+  try {
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    if (!res.ok) throw new Error('Request failed');
+
+    btn.textContent = 'Message Sent!';
+    btn.style.background = 'linear-gradient(135deg, #059669, #10b981)';
+    this.reset();
+  } catch (err) {
+    btn.textContent = 'Failed — try again';
+    btn.style.background = 'linear-gradient(135deg, #dc2626, #ef4444)';
+    btn.disabled = false;
+    setTimeout(() => { btn.textContent = original; btn.style.background = ''; }, 3500);
+  }
 });
 
 // Nav shadow on scroll

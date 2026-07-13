@@ -4,264 +4,136 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Gallery — Rabbit Power Washing</title>
-<meta name="description" content="Before and after photos from Rabbit Power Washing — driveways, house siding, fences, and concrete flatwork in Montgomery County MD.">
+<meta name="description" content="Before and after pressure washing photos from Rabbit Power Washing — driveways, siding, concrete, and fences in Montgomery County MD.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-
 <style>
-/* ── Page hero ────────────────────────────────────────── */
+/* ── Page hero ─────────────────────────────────────────── */
 .page-hero {
-  background: var(--deep);
-  padding: calc(var(--nav-top) + var(--nav-h) + 4rem) 5vw 5rem;
-  position: relative;
-  overflow: hidden;
+  background: var(--navy);
+  padding: 5rem clamp(1.5rem,5vw,3rem) 4.5rem;
 }
-.page-hero::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: #2a2214;
-  filter: url(#f-page-dirt);
-  opacity: 0.45;
-}
-.page-hero-content { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; }
-.page-hero .eyebrow { color: rgba(255,255,255,0.35); display: block; margin-bottom: 0.6rem; }
-.page-hero h1 { color: #fff; }
-.page-hero h1 .blue { color: var(--water); }
-.page-hero p { color: rgba(255,255,255,0.5); max-width: 480px; font-size: 1rem; line-height: 1.6; margin-top: 1rem; }
+.page-hero-inner { max-width: 1200px; margin: 0 auto; }
+.page-hero .sec-label { color: var(--cyan); display: block; margin-bottom: 0.7rem; }
+.page-hero h1 { font-size: clamp(2.2rem, 4vw, 3.4rem); font-weight: 800; color: #fff; line-height: 1.1; }
+.page-hero p  { color: rgba(255,255,255,0.5); font-size: 1rem; line-height: 1.7; max-width: 480px; margin-top: 0.8rem; }
 
-/* ── Gallery body ─────────────────────────────────────── */
-.gallery-sec { background: var(--stone); padding: 5rem 5vw 6rem; }
+/* ── Gallery body ──────────────────────────────────────── */
+.gallery-sec { background: var(--off); padding: 5rem clamp(1.5rem,5vw,3rem); }
 .gallery-inner { max-width: 1200px; margin: 0 auto; }
 
-/* ── Before/after pair ────────────────────────────────── */
-.ba-pair-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-  margin-bottom: 4rem;
+/* ── Section divider ───────────────────────────────────── */
+.g-divider {
+  display: flex; align-items: center; gap: 1rem;
+  margin: 3rem 0 2rem;
 }
-@media (max-width: 780px) { .ba-pair-grid { grid-template-columns: 1fr; } }
+.g-divider span {
+  font-size: 0.7rem; font-weight: 800; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--blue); white-space: nowrap;
+}
+.g-divider::before, .g-divider::after {
+  content: ''; flex: 1; height: 1.5px; background: var(--border);
+}
 
-.ba-card {
-  border-radius: 8px;
-  overflow: hidden;
-  background: var(--deep);
+/* ── Photo grid ────────────────────────────────────────── */
+.photo-grid {
+  display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5rem;
 }
-.ba-card-label {
-  padding: 1.2rem 1.4rem 0;
-}
-.ba-card-label h3 {
-  font-family: 'Big Shoulders Display', sans-serif;
-  font-weight: 900; font-size: 1.2rem;
-  color: #fff; margin-bottom: 0.2rem;
-}
-.ba-card-label p { font-size: 0.8rem; color: rgba(255,255,255,0.4); }
+@media (max-width: 700px) { .photo-grid { grid-template-columns: 1fr; } }
 
-.ba-mini {
-  position: relative;
-  aspect-ratio: 3/2;
-  cursor: col-resize;
-  user-select: none;
-  margin: 1rem;
-  border-radius: 6px;
-  overflow: hidden;
+.photo-card {
+  background: #fff; border-radius: 12px; overflow: hidden;
+  border: 1.5px solid var(--border);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
-.ba-mini-before, .ba-mini-after {
+.photo-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.1); }
+.photo-card img {
+  width: 100%; aspect-ratio: 3/2; object-fit: cover; display: block;
+}
+.photo-card-info { padding: 1.1rem 1.3rem; }
+.photo-card-info h3 { font-size: 1rem; font-weight: 800; color: var(--navy); margin-bottom: 0.2rem; }
+.photo-card-info p  { font-size: 0.8rem; color: var(--muted); }
+
+/* ── Full-width slider ─────────────────────────────────── */
+.full-slider {
+  position: relative; border-radius: 12px; overflow: hidden;
+  cursor: col-resize; user-select: none; aspect-ratio: 21/9;
+  border: 1.5px solid var(--border);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+}
+.full-slider-before {
   position: absolute; inset: 0;
+  background: url('images/before-concrete.jpg') center/cover no-repeat;
+  background-color: #2a2018;
 }
-.ba-mini-label {
-  position: absolute; bottom: 0.6rem;
-  font-size: 0.6rem; font-weight: 700;
-  letter-spacing: 0.12em; text-transform: uppercase;
-  padding: 0.2rem 0.5rem; border-radius: 2px; z-index: 5;
+.full-slider-after {
+  position: absolute; inset: 0;
+  background: url('images/after-concrete.jpg') center/cover no-repeat;
+  background-color: #b8b4ac;
+  clip-path: inset(0 50% 0 0);
 }
-.ba-mini-label.before { left: 0.6rem; background: rgba(0,0,0,0.65); color: rgba(255,255,255,0.6); }
-.ba-mini-label.after  { right: 0.6rem; background: rgba(27,98,232,0.9); color: #fff; }
-.ba-mini-divider {
+.full-slider-label {
+  position: absolute; top: 1rem; z-index: 4;
+  font-size: 0.68rem; font-weight: 800; letter-spacing: 0.14em;
+  text-transform: uppercase; padding: 0.3rem 0.75rem; border-radius: 999px;
+}
+.full-slider-label.b { left: 1rem; background: rgba(0,0,0,0.65); color: rgba(255,255,255,0.75); border: 1px solid rgba(255,255,255,0.15); }
+.full-slider-label.a { right: 1rem; background: var(--blue); color: #fff; }
+.full-slider-line {
   position: absolute; top: 0; bottom: 0; left: 50%;
-  width: 2px; background: #fff; z-index: 4;
-  transform: translateX(-50%);
-  box-shadow: 0 0 8px rgba(27,98,232,0.8);
+  width: 2px; background: #fff; z-index: 4; transform: translateX(-50%);
+  box-shadow: 0 0 12px rgba(255,255,255,0.6);
 }
-.ba-mini-handle {
-  position: absolute; top: 50%; left: 50%;
-  width: 30px; height: 30px; border-radius: 50%;
-  background: var(--water); border: 2.5px solid #fff;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.4);
-  transform: translate(-50%,-50%); z-index: 5;
+.full-slider-knob {
+  position: absolute; top: 50%; left: 50%; z-index: 5;
+  width: 40px; height: 40px; border-radius: 50%; background: #fff;
+  box-shadow: 0 3px 16px rgba(0,0,0,0.35);
+  transform: translate(-50%,-50%);
   display: flex; align-items: center; justify-content: center;
 }
-.ba-mini-handle svg { width: 14px; height: 14px; stroke: #fff; fill: none; stroke-width: 2.5; stroke-linecap: round; }
+.full-slider-knob svg { width: 18px; height: 18px; stroke: var(--navy); fill: none; stroke-width: 2.5; stroke-linecap: round; }
 
-/* ── Real photo cards ─────────────────────────────────── */
-.photo-card-img {
-  margin: 1rem;
-  border-radius: 6px;
-  overflow: hidden;
-  aspect-ratio: 3/2;
-}
-.photo-card-img img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* ── Section separator ────────────────────────────────── */
-.gallery-divider {
-  display: flex; align-items: center; gap: 1.5rem;
-  margin: 3rem 0 2.5rem;
-}
-.gallery-divider span { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mud); white-space: nowrap; }
-.gallery-divider::before, .gallery-divider::after { content: ''; flex: 1; height: 1px; background: rgba(0,0,0,0.1); }
-
-/* ── Testimonials ─────────────────────────────────────── */
+/* ── Reviews ───────────────────────────────────────────── */
 .reviews-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
-  margin-bottom: 4rem;
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem;
 }
-@media (max-width: 780px) { .reviews-grid { grid-template-columns: 1fr; } }
+@media (max-width: 700px) { .reviews-grid { grid-template-columns: 1fr; } }
 
-.review-card {
-  background: #fff;
-  border: 1px solid rgba(0,0,0,0.06);
-  border-radius: 6px;
-  padding: 1.6rem;
+.review {
+  background: #fff; border: 1.5px solid var(--border);
+  border-radius: 12px; padding: 1.6rem;
 }
-.review-stars { color: #F5A623; font-size: 0.9rem; margin-bottom: 0.75rem; }
-.review-text { font-size: 0.88rem; color: var(--text-2); line-height: 1.65; margin-bottom: 1rem; }
-.review-name { font-size: 0.8rem; font-weight: 600; color: var(--text); }
-.review-loc  { font-size: 0.76rem; color: var(--mud); }
+.review-stars { color: #F59E0B; font-size: 0.9rem; margin-bottom: 0.8rem; }
+.review-text  { font-size: 0.88rem; color: var(--muted); line-height: 1.65; margin-bottom: 1.1rem; }
+.review-name  { font-size: 0.82rem; font-weight: 800; color: var(--navy); }
+.review-city  { font-size: 0.76rem; color: var(--muted); }
 
-/* ── CTA strip ────────────────────────────────────────── */
+/* ── CTA card ──────────────────────────────────────────── */
 .gallery-cta {
-  background: var(--deep);
-  border-radius: 8px;
-  padding: 3.5rem 2.5rem;
-  text-align: center;
+  background: var(--navy); border-radius: 12px;
+  padding: 3.5rem 2.5rem; text-align: center; margin-top: 4rem;
 }
-.gallery-cta h3 {
-  font-family: 'Big Shoulders Display', sans-serif;
-  font-weight: 900; font-size: 2.2rem;
-  color: #fff; margin-bottom: 0.6rem;
-}
-.gallery-cta p { color: rgba(255,255,255,0.5); font-size: 0.9rem; margin-bottom: 1.8rem; }
-.gallery-cta-btns { display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center; }
+.gallery-cta h3 { font-size: 1.8rem; font-weight: 800; color: #fff; margin-bottom: 0.6rem; }
+.gallery-cta p  { color: rgba(255,255,255,0.5); font-size: 0.92rem; margin-bottom: 1.8rem; }
+.gallery-cta-row { display: flex; flex-wrap: wrap; gap: 0.9rem; justify-content: center; }
 </style>
 </head>
 <body>
 
-<!-- SVG filters for gallery textures -->
-<svg width="0" height="0" style="position:absolute;pointer-events:none;overflow:hidden" aria-hidden="true">
-  <defs>
-    <!-- Page hero dirt -->
-    <filter id="f-page-dirt" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
-      <feTurbulence type="fractalNoise" baseFrequency="0.65 0.48" numOctaves="4" seed="7" stitchTiles="stitch" result="t"/>
-      <feComponentTransfer in="t">
-        <feFuncR type="linear" slope="0.25" intercept="0.08"/>
-        <feFuncG type="linear" slope="0.20" intercept="0.06"/>
-        <feFuncB type="linear" slope="0.14" intercept="0.03"/>
-        <feFuncA type="linear" slope="0" intercept="1"/>
-      </feComponentTransfer>
-    </filter>
-    <!-- Driveway dirty -->
-    <filter id="f-drv-d" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
-      <feTurbulence type="fractalNoise" baseFrequency="0.80 0.58" numOctaves="6" seed="5" stitchTiles="stitch" result="t"/>
-      <feComponentTransfer in="t">
-        <feFuncR type="linear" slope="0.20" intercept="0.10"/>
-        <feFuncG type="linear" slope="0.17" intercept="0.08"/>
-        <feFuncB type="linear" slope="0.12" intercept="0.04"/>
-        <feFuncA type="linear" slope="0" intercept="1"/>
-      </feComponentTransfer>
-    </filter>
-    <!-- Driveway clean -->
-    <filter id="f-drv-c" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
-      <feTurbulence type="fractalNoise" baseFrequency="0.62 0.45" numOctaves="5" seed="11" stitchTiles="stitch" result="t"/>
-      <feComponentTransfer in="t">
-        <feFuncR type="linear" slope="0.12" intercept="0.68"/>
-        <feFuncG type="linear" slope="0.11" intercept="0.66"/>
-        <feFuncB type="linear" slope="0.09" intercept="0.62"/>
-        <feFuncA type="linear" slope="0" intercept="1"/>
-      </feComponentTransfer>
-    </filter>
-    <!-- Siding dirty (beige-ish) -->
-    <filter id="f-sid-d" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
-      <feTurbulence type="fractalNoise" baseFrequency="0.55 0.40" numOctaves="4" seed="17" stitchTiles="stitch" result="t"/>
-      <feComponentTransfer in="t">
-        <feFuncR type="linear" slope="0.18" intercept="0.22"/>
-        <feFuncG type="linear" slope="0.16" intercept="0.18"/>
-        <feFuncB type="linear" slope="0.12" intercept="0.14"/>
-        <feFuncA type="linear" slope="0" intercept="1"/>
-      </feComponentTransfer>
-    </filter>
-    <!-- Siding clean -->
-    <filter id="f-sid-c" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
-      <feTurbulence type="fractalNoise" baseFrequency="0.50 0.38" numOctaves="4" seed="22" stitchTiles="stitch" result="t"/>
-      <feComponentTransfer in="t">
-        <feFuncR type="linear" slope="0.10" intercept="0.82"/>
-        <feFuncG type="linear" slope="0.09" intercept="0.80"/>
-        <feFuncB type="linear" slope="0.08" intercept="0.76"/>
-        <feFuncA type="linear" slope="0" intercept="1"/>
-      </feComponentTransfer>
-    </filter>
-    <!-- Fence dirty (wood) -->
-    <filter id="f-fnc-d" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
-      <feTurbulence type="fractalNoise" baseFrequency="0.30 0.70" numOctaves="5" seed="33" stitchTiles="stitch" result="t"/>
-      <feComponentTransfer in="t">
-        <feFuncR type="linear" slope="0.20" intercept="0.20"/>
-        <feFuncG type="linear" slope="0.15" intercept="0.14"/>
-        <feFuncB type="linear" slope="0.10" intercept="0.08"/>
-        <feFuncA type="linear" slope="0" intercept="1"/>
-      </feComponentTransfer>
-    </filter>
-    <!-- Fence clean (wood bright) -->
-    <filter id="f-fnc-c" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
-      <feTurbulence type="fractalNoise" baseFrequency="0.28 0.66" numOctaves="5" seed="41" stitchTiles="stitch" result="t"/>
-      <feComponentTransfer in="t">
-        <feFuncR type="linear" slope="0.18" intercept="0.60"/>
-        <feFuncG type="linear" slope="0.14" intercept="0.46"/>
-        <feFuncB type="linear" slope="0.10" intercept="0.30"/>
-        <feFuncA type="linear" slope="0" intercept="1"/>
-      </feComponentTransfer>
-    </filter>
-    <!-- Patio dirty -->
-    <filter id="f-pat-d" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
-      <feTurbulence type="fractalNoise" baseFrequency="0.75 0.55" numOctaves="5" seed="55" stitchTiles="stitch" result="t"/>
-      <feComponentTransfer in="t">
-        <feFuncR type="linear" slope="0.22" intercept="0.12"/>
-        <feFuncG type="linear" slope="0.18" intercept="0.09"/>
-        <feFuncB type="linear" slope="0.13" intercept="0.06"/>
-        <feFuncA type="linear" slope="0" intercept="1"/>
-      </feComponentTransfer>
-    </filter>
-    <!-- Patio clean -->
-    <filter id="f-pat-c" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
-      <feTurbulence type="fractalNoise" baseFrequency="0.68 0.50" numOctaves="4" seed="61" stitchTiles="stitch" result="t"/>
-      <feComponentTransfer in="t">
-        <feFuncR type="linear" slope="0.13" intercept="0.70"/>
-        <feFuncG type="linear" slope="0.12" intercept="0.68"/>
-        <feFuncB type="linear" slope="0.10" intercept="0.63"/>
-        <feFuncA type="linear" slope="0" intercept="1"/>
-      </feComponentTransfer>
-    </filter>
-  </defs>
-</svg>
-
 <!-- ── Nav ────────────────────────────────────────────── -->
-<nav class="nav" id="nav">
+<nav class="nav">
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo" aria-label="Rabbit Power Washing home">
+    <a href="index.html" class="nav-logo">
       <img src="images/logo.png" alt="Rabbit Power Washing" class="nav-logo-img"
-           onerror="this.style.display='none';document.getElementById('logoFallback').style.display='flex'">
-      <span class="nav-logo-fallback" id="logoFallback">
-        <span class="nav-logo-mark">🐇</span>
-        RABBIT POWER WASHING
+           onerror="this.style.display='none';document.getElementById('lf').style.display='flex'">
+      <span class="nav-logo-fallback" id="lf">
+        <span class="nav-logo-emoji">🐇</span>
+        Rabbit Power Washing
       </span>
     </a>
-    <ul class="nav-links">
+    <ul class="nav-links" id="navLinks">
       <li><a href="index.html">Home</a></li>
       <li><a href="gallery.html" class="active">Gallery</a></li>
       <li><a href="contact.html">Contact</a></li>
@@ -269,19 +141,19 @@
     <div class="nav-right">
       <a href="tel:3017997475" class="nav-phone">301-799-7475</a>
       <a href="contact.html" class="nav-cta">Free Quote</a>
-      <button class="nav-burger" id="burger" aria-label="Open menu">
-        <span></span><span></span><span></span>
-      </button>
     </div>
+    <button class="nav-burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
 <!-- ── Page hero ──────────────────────────────────────── -->
 <section class="page-hero">
-  <div class="page-hero-content">
-    <span class="eyebrow">Results That Speak</span>
-    <h1 class="disp disp-lg">Before <span class="blue">&amp;</span> After</h1>
-    <p>Real jobs. Real transformations. Every surface we touch gets restored to its best condition.</p>
+  <div class="page-hero-inner">
+    <span class="sec-label">Our Work</span>
+    <h1>Before &amp; After</h1>
+    <p>Real jobs. Real homes. Every surface we touch gets restored — or we come back and fix it.</p>
   </div>
 </section>
 
@@ -289,107 +161,70 @@
 <section class="gallery-sec">
   <div class="gallery-inner">
 
-    <div class="gallery-divider rv"><span>Driveways &amp; Concrete</span></div>
-
-    <!-- Real photo grid: driveway + siding -->
-    <div class="ba-pair-grid photo-pair-grid">
-      <!-- Driveway real photo -->
-      <div class="ba-card rv">
-        <div class="ba-card-label">
+    <!-- Real photos: driveway + siding -->
+    <div class="g-divider rv"><span>Driveways &amp; House Washing</span></div>
+    <div class="photo-grid">
+      <div class="photo-card rv">
+        <img src="images/driveway-ba.jpg" alt="Driveway before and after pressure washing" loading="lazy"
+             onerror="this.parentElement.style.background='#e8f0ff';this.style.display='none'">
+        <div class="photo-card-info">
           <h3>Residential Driveway</h3>
-          <p>Rockville, MD — Oil &amp; tire stain removal</p>
-        </div>
-        <div class="photo-card-img">
-          <img src="images/driveway-ba.jpg" alt="Driveway before and after pressure washing"
-               loading="lazy">
+          <p>Rockville, MD — Oil stains &amp; tire marks removed</p>
         </div>
       </div>
-
-      <!-- Siding real photo -->
-      <div class="ba-card rv" style="transition-delay:.1s">
-        <div class="ba-card-label">
+      <div class="photo-card rv" style="transition-delay:.1s">
+        <img src="images/siding-ba.jpg" alt="House siding before and after soft wash" loading="lazy"
+             onerror="this.parentElement.style.background='#e8f0ff';this.style.display='none'">
+        <div class="photo-card-info">
           <h3>Vinyl House Siding</h3>
-          <p>Gaithersburg, MD — Full house soft wash</p>
-        </div>
-        <div class="photo-card-img">
-          <img src="images/siding-ba.jpg" alt="House siding before and after soft wash"
-               loading="lazy">
+          <p>Gaithersburg, MD — Green algae &amp; mold removed</p>
         </div>
       </div>
     </div>
 
-    <div class="gallery-divider rv"><span>Concrete &amp; Surfaces</span></div>
-
-    <!-- Interactive sliders: concrete before/after using real close-up photos -->
-    <div class="ba-pair-grid">
-      <!-- Concrete slider with real photos -->
-      <div class="ba-card rv">
-        <div class="ba-card-label">
-          <h3>Concrete Flatwork</h3>
-          <p>Clarksburg, MD — Algae &amp; grime removal</p>
-        </div>
-        <div class="ba-mini photo-slider"
-             data-before="images/before-concrete.jpg"
-             data-after="images/after-concrete.jpg">
-          <div class="ba-mini-before"></div>
-          <div class="ba-mini-after"></div>
-          <span class="ba-mini-label before">BEFORE</span>
-          <span class="ba-mini-label after">AFTER</span>
-          <div class="ba-mini-divider"></div>
-          <div class="ba-mini-handle">
-            <svg viewBox="0 0 14 14"><polyline points="4,2 1,7 4,12"/><polyline points="10,2 13,7 10,12"/></svg>
-          </div>
-        </div>
-      </div>
-
-      <!-- Fence (SVG texture — no photo yet) -->
-      <div class="ba-card rv" style="transition-delay:.1s">
-        <div class="ba-card-label">
-          <h3>Wood Fence</h3>
-          <p>North Potomac, MD — Brightening &amp; mold removal</p>
-        </div>
-        <div class="ba-mini" data-dirty="f-fnc-d" data-clean="f-fnc-c" data-dirty-bg="#3a2e1e" data-clean-bg="#b07040">
-          <div class="ba-mini-before"></div>
-          <div class="ba-mini-after"></div>
-          <span class="ba-mini-label before">BEFORE</span>
-          <span class="ba-mini-label after">AFTER</span>
-          <div class="ba-mini-divider"></div>
-          <div class="ba-mini-handle">
-            <svg viewBox="0 0 14 14"><polyline points="4,2 1,7 4,12"/><polyline points="10,2 13,7 10,12"/></svg>
-          </div>
-        </div>
+    <!-- Full-width interactive concrete slider -->
+    <div class="g-divider rv" style="transition-delay:.1s"><span>Concrete — Drag to Compare</span></div>
+    <div class="full-slider rv" id="fs" style="transition-delay:.15s">
+      <div class="full-slider-before"></div>
+      <div class="full-slider-after" id="fsAfter"></div>
+      <span class="full-slider-label b">Before</span>
+      <span class="full-slider-label a">After</span>
+      <div class="full-slider-line" id="fsLine"></div>
+      <div class="full-slider-knob" id="fsKnob">
+        <svg viewBox="0 0 20 20"><polyline points="6,4 2,10 6,16"/><polyline points="14,4 18,10 14,16"/></svg>
       </div>
     </div>
 
-    <div class="gallery-divider rv"><span>What Customers Say</span></div>
-
+    <!-- Reviews -->
+    <div class="g-divider rv" style="transition-delay:.05s"><span>What Customers Say</span></div>
     <div class="reviews-grid">
-      <div class="review-card rv">
+      <div class="review rv">
         <div class="review-stars">★★★★★</div>
-        <p class="review-text">"My driveway had oil stains from the previous owner that I assumed were permanent. Rabbit had it looking brand new in under two hours. Absolutely worth every penny."</p>
+        <p class="review-text">"My driveway had oil stains from the previous owner that I assumed were permanent. Rabbit had it looking brand new in under two hours."</p>
         <div class="review-name">Marcus T.</div>
-        <div class="review-loc">Rockville, MD</div>
+        <div class="review-city">Rockville, MD</div>
       </div>
-      <div class="review-card rv" style="transition-delay:.1s">
+      <div class="review rv" style="transition-delay:.1s">
         <div class="review-stars">★★★★★</div>
-        <p class="review-text">"They showed up on time, worked fast, and my siding looks incredible. I've gotten three compliments from neighbors this week. Booking them again for the fence next month."</p>
+        <p class="review-text">"Showed up on time, worked fast, and my siding looks incredible. I've gotten three compliments from neighbors this week. Booking again next month."</p>
         <div class="review-name">Diana K.</div>
-        <div class="review-loc">Clarksburg, MD</div>
+        <div class="review-city">Clarksburg, MD</div>
       </div>
-      <div class="review-card rv" style="transition-delay:.2s">
+      <div class="review rv" style="transition-delay:.2s">
         <div class="review-stars">★★★★★</div>
-        <p class="review-text">"Flat-rate pricing meant no surprises. They quoted the whole job upfront and stuck to it. The concrete patio looks better than when we moved in. Highly recommend."</p>
+        <p class="review-text">"Flat-rate pricing meant no surprises. Quoted the whole job upfront and stuck to it. Concrete patio looks better than when we moved in."</p>
         <div class="review-name">Robert N.</div>
-        <div class="review-loc">Gaithersburg, MD</div>
+        <div class="review-city">Gaithersburg, MD</div>
       </div>
     </div>
 
+    <!-- CTA -->
     <div class="gallery-cta rv">
-      <h3>Ready to Transform Your Property?</h3>
-      <p>Most quotes back within the hour. Scheduling available this week.</p>
-      <div class="gallery-cta-btns">
+      <h3>Want results like these?</h3>
+      <p>Get a flat-rate quote — most responses back within the hour.</p>
+      <div class="gallery-cta-row">
         <a href="contact.html" class="btn btn-blue">Get a Free Quote</a>
-        <a href="tel:3017997475" class="btn btn-ghost" style="border-color:rgba(255,255,255,0.25)">Call 301-799-7475</a>
+        <a href="tel:3017997475" class="btn btn-outline">Call 301-799-7475</a>
       </div>
     </div>
 
@@ -399,12 +234,12 @@
 <!-- ── Footer ─────────────────────────────────────────── -->
 <footer class="footer">
   <div class="footer-inner">
-    <span class="footer-logo">🐇 RABBIT POWER WASHING</span>
-    <div class="footer-right">
-      <span>© 2025 Rabbit Power Washing. Rockville, MD.</span>
+    <span class="footer-brand">🐇 Rabbit Power Washing · Rockville, MD</span>
+    <div class="footer-links">
       <a href="index.html">Home</a>
       <a href="contact.html">Contact</a>
       <a href="tel:3017997475">301-799-7475</a>
+      <span style="color:rgba(255,255,255,0.2)">© 2025</span>
     </div>
   </div>
 </footer>
@@ -412,82 +247,50 @@
 <script>
 /* ── Page transitions ─────────────────────────────────── */
 document.querySelectorAll('a[href]').forEach(a => {
-  const href = a.getAttribute('href');
-  if (!href || href.startsWith('#') || href.startsWith('tel:') || href.startsWith('mailto:')) return;
+  const h = a.getAttribute('href');
+  if (!h || h.startsWith('#') || h.startsWith('tel:') || h.startsWith('mailto:')) return;
   a.addEventListener('click', e => {
     e.preventDefault();
-    document.body.style.transition = 'opacity 0.22s ease, transform 0.22s ease';
+    document.body.style.transition = 'opacity 0.2s, transform 0.2s';
     document.body.style.opacity = '0';
     document.body.style.transform = 'translateY(-8px)';
-    setTimeout(() => { window.location.href = href; }, 210);
+    setTimeout(() => location.href = h, 180);
   });
 });
 
 /* ── Scroll reveal ────────────────────────────────────── */
-const io = new IntersectionObserver(entries =>
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }),
-  { threshold: 0.1 }
+const obs = new IntersectionObserver(entries =>
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }), { threshold: 0.1 }
 );
-document.querySelectorAll('.rv').forEach(el => io.observe(el));
+document.querySelectorAll('.rv').forEach(el => obs.observe(el));
 
-/* ── Mini B/A sliders ─────────────────────────────────── */
-document.querySelectorAll('.ba-mini').forEach(wrap => {
-  const before  = wrap.querySelector('.ba-mini-before');
-  const after   = wrap.querySelector('.ba-mini-after');
-  const divider = wrap.querySelector('.ba-mini-divider');
-  const handle  = wrap.querySelector('.ba-mini-handle');
-
-  // Photo-based slider (data-before / data-after)
-  if (wrap.dataset.before) {
-    before.style.cssText = `background: url('${wrap.dataset.before}') center/cover no-repeat; background-color:#3d3524;`;
-    after.style.cssText  = `background: url('${wrap.dataset.after}')  center/cover no-repeat; background-color:#bbb7af;`;
-  } else {
-    // SVG filter slider
-    const dirtyId = wrap.dataset.dirty;
-    const cleanId = wrap.dataset.clean;
-    const dirtyBg = wrap.dataset.dirtyBg || '#3d3524';
-    const cleanBg = wrap.dataset.cleanBg || '#bbb7af';
-    before.style.background = dirtyBg;
-    before.style.filter = `url(#${dirtyId})`;
-    after.style.background = cleanBg;
-    after.style.filter = `url(#${cleanId})`;
+/* ── Full-width slider ────────────────────────────────── */
+(function() {
+  const wrap  = document.getElementById('fs');
+  const after = document.getElementById('fsAfter');
+  const line  = document.getElementById('fsLine');
+  const knob  = document.getElementById('fsKnob');
+  if (!wrap) return;
+  let drag = false;
+  function pos(x) {
+    const r = wrap.getBoundingClientRect();
+    const p = Math.max(4, Math.min(96, (x - r.left) / r.width * 100));
+    after.style.clipPath = `inset(0 ${100-p}% 0 0)`;
+    line.style.left = knob.style.left = p + '%';
   }
-
-  let dragging = false;
-
-  function setPos(x) {
-    const rect = wrap.getBoundingClientRect();
-    const pct = Math.max(3, Math.min(97, (x - rect.left) / rect.width * 100));
-    after.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
-    divider.style.left = pct + '%';
-    handle.style.left  = pct + '%';
-  }
-
-  // Initialize at 50%
-  requestAnimationFrame(() => {
-    const rect = wrap.getBoundingClientRect();
-    setPos(rect.left + rect.width * 0.5);
-  });
-
-  wrap.addEventListener('mousedown',  e => { dragging = true; setPos(e.clientX); });
-  document.addEventListener('mouseup',   () => { dragging = false; });
-  document.addEventListener('mousemove', e => { if (dragging) setPos(e.clientX); });
-  wrap.addEventListener('touchstart',  e => { dragging = true; setPos(e.touches[0].clientX); }, { passive: true });
-  document.addEventListener('touchend', () => { dragging = false; });
-  document.addEventListener('touchmove', e => { if (dragging) setPos(e.touches[0].clientX); }, { passive: true });
-});
+  window.addEventListener('load', () => pos(wrap.getBoundingClientRect().left + wrap.offsetWidth * .5));
+  wrap.addEventListener('mousedown',  e => { drag=true; pos(e.clientX); });
+  document.addEventListener('mouseup',   () => drag=false);
+  document.addEventListener('mousemove', e => { if(drag) pos(e.clientX); });
+  wrap.addEventListener('touchstart',  e => { drag=true; pos(e.touches[0].clientX); }, {passive:true});
+  document.addEventListener('touchend', () => drag=false);
+  document.addEventListener('touchmove', e => { if(drag) pos(e.touches[0].clientX); }, {passive:true});
+})();
 
 /* ── Mobile nav ───────────────────────────────────────── */
-const burger = document.getElementById('burger');
-const mLinks = document.querySelector('.nav-links');
-if (burger && mLinks) {
-  burger.addEventListener('click', () => {
-    const open = mLinks.classList.toggle('nav-mobile-open');
-    mLinks.style.cssText = open
-      ? 'display:flex;flex-direction:column;position:absolute;top:calc(100% + 0.6rem);left:0;right:0;background:rgba(10,16,10,0.97);backdrop-filter:blur(20px);padding:1.5rem;gap:0.5rem;border-radius:12px;border:1px solid rgba(255,255,255,0.1)'
-      : '';
-  });
-}
+document.getElementById('burger').addEventListener('click', () => {
+  document.getElementById('navLinks').classList.toggle('open');
+});
 </script>
 </body>
 </html>

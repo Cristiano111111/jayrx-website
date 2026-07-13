@@ -3,176 +3,146 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Get a Quote — Rabbit Power Washing</title>
+<title>Get a Free Quote — Rabbit Power Washing</title>
 <meta name="description" content="Get a free pressure washing quote in Rockville, Clarksburg & Montgomery County MD. Contact Rabbit Power Washing at 301-799-7475.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <link rel="stylesheet" href="style.css">
-
 <style>
-/* ── Page hero ────────────────────────────────────────── */
+/* ── Page hero ─────────────────────────────────────────── */
 .page-hero {
-  background: var(--deep);
-  padding: calc(var(--nav-top) + var(--nav-h) + 4rem) 5vw 5rem;
+  background: var(--navy);
+  padding: 5rem clamp(1.5rem,5vw,3rem) 4.5rem;
 }
-.page-hero .eyebrow { color: rgba(255,255,255,0.35); display: block; margin-bottom: 0.6rem; }
-.page-hero h1 { color: #fff; }
-.page-hero h1 .blue { color: var(--water); }
-.page-hero p { color: rgba(255,255,255,0.5); max-width: 480px; font-size: 1rem; line-height: 1.6; margin-top: 1rem; }
 .page-hero-inner { max-width: 1200px; margin: 0 auto; }
+.page-hero .sec-label { color: var(--cyan); display: block; margin-bottom: 0.7rem; }
+.page-hero h1 { font-size: clamp(2.2rem,4vw,3.4rem); font-weight: 800; color: #fff; line-height: 1.1; }
+.page-hero p  { color: rgba(255,255,255,0.5); font-size: 1rem; line-height: 1.7; max-width: 480px; margin-top: 0.8rem; }
 
-/* ── Main layout ──────────────────────────────────────── */
-.contact-sec { background: var(--stone); padding: 5rem 5vw; }
+/* ── Main layout ───────────────────────────────────────── */
+.contact-sec { background: var(--off); padding: 5rem clamp(1.5rem,5vw,3rem); }
 .contact-inner {
   max-width: 1200px; margin: 0 auto;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
+  display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3.5rem; align-items: start;
 }
-@media (max-width: 900px) { .contact-inner { grid-template-columns: 1fr; gap: 3rem; } }
+@media (max-width: 900px) { .contact-inner { grid-template-columns: 1fr; } }
 
-/* ── Form ─────────────────────────────────────────────── */
+/* ── Form card ─────────────────────────────────────────── */
 .form-card {
-  background: #fff;
-  border: 1px solid rgba(0,0,0,0.06);
-  border-radius: 8px;
-  padding: 2.5rem;
+  background: #fff; border: 1.5px solid var(--border);
+  border-radius: 16px; padding: 2.5rem;
 }
-.form-card h2 {
-  font-family: 'Big Shoulders Display', sans-serif;
-  font-weight: 900; font-size: 1.8rem;
-  color: var(--deep); margin-bottom: 0.4rem;
-}
-.form-card > p {
-  font-size: 0.88rem; color: var(--text-2);
-  line-height: 1.6; margin-bottom: 2rem;
-}
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-@media (max-width: 500px) { .form-row { grid-template-columns: 1fr; } }
+.form-card h2 { font-size: 1.5rem; font-weight: 800; color: var(--navy); margin-bottom: 0.4rem; }
+.form-card > p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; margin-bottom: 2rem; }
 
-.field { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.1rem; }
-.field label { font-size: 0.78rem; font-weight: 600; color: var(--text); letter-spacing: 0.03em; }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media (max-width: 500px) { .row2 { grid-template-columns: 1fr; } }
+
+.field { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+.field label { font-size: 0.78rem; font-weight: 700; color: var(--text); letter-spacing: 0.03em; }
 .field input,
 .field select,
 .field textarea {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.9rem;
-  padding: 0.7rem 0.9rem;
-  border: 1.5px solid rgba(0,0,0,0.14);
-  border-radius: 4px;
-  background: var(--stone);
-  color: var(--text);
-  transition: border-color 0.15s, box-shadow 0.15s;
-  width: 100%;
+  font-family: inherit; font-size: 0.9rem;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid var(--border); border-radius: 8px;
+  background: var(--off); color: var(--text);
+  transition: border-color 0.15s, box-shadow 0.15s; width: 100%;
 }
 .field input:focus,
 .field select:focus,
 .field textarea:focus {
-  outline: none;
-  border-color: var(--water);
-  box-shadow: 0 0 0 3px rgba(27,98,232,0.12);
-  background: #fff;
+  outline: none; border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(21,96,212,0.1); background: #fff;
 }
 .field textarea { resize: vertical; min-height: 100px; }
-.field select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.9rem center; cursor: pointer; }
+.field select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748B' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 1rem center; cursor: pointer;
+}
 
 .submit-btn {
-  width: 100%;
-  padding: 0.95rem 2rem;
-  background: var(--water);
-  color: #fff;
-  border: none; border-radius: 4px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.95rem; font-weight: 600;
-  cursor: pointer;
-  transition: all 0.18s;
-  margin-top: 0.5rem;
+  width: 100%; padding: 0.95rem 2rem;
+  background: var(--blue); color: #fff;
+  border: none; border-radius: 8px;
+  font-family: inherit; font-size: 0.95rem; font-weight: 700;
+  cursor: pointer; transition: all 0.18s; margin-top: 0.5rem;
 }
-.submit-btn:hover:not(:disabled) { background: var(--water-d); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(27,98,232,0.35); }
+.submit-btn:hover:not(:disabled) {
+  background: var(--blue-d); transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(21,96,212,0.3);
+}
 .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
-.form-feedback {
-  display: none; margin-top: 1rem;
-  padding: 0.85rem 1rem;
-  border-radius: 4px;
-  font-size: 0.88rem; font-weight: 500;
+.form-msg {
+  display: none; margin-top: 1rem; padding: 0.85rem 1rem;
+  border-radius: 8px; font-size: 0.88rem; font-weight: 600;
 }
-.form-feedback.success { background: #edf7ed; color: #2e7d32; border: 1px solid #c8e6c9; display: block; }
-.form-feedback.error   { background: #fdecea; color: #c62828; border: 1px solid #ffcdd2; display: block; }
+.form-msg.ok  { background: #F0FDF4; color: #166534; border: 1.5px solid #BBF7D0; display: block; }
+.form-msg.err { background: #FEF2F2; color: #991B1B; border: 1.5px solid #FECACA; display: block; }
 
-/* ── Contact sidebar ──────────────────────────────────── */
-.contact-sidebar { display: flex; flex-direction: column; gap: 2rem; }
+/* ── Sidebar ───────────────────────────────────────────── */
+.sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
 
-.contact-info-card {
-  background: var(--deep);
-  border-radius: 8px;
-  padding: 2rem;
+.info-card {
+  background: var(--navy); border-radius: 16px; padding: 1.8rem;
 }
-.contact-info-card h3 {
-  font-family: 'Big Shoulders Display', sans-serif;
-  font-weight: 900; font-size: 1.3rem;
-  color: #fff; margin-bottom: 1.4rem;
+.info-card h3 { font-size: 1rem; font-weight: 800; color: #fff; margin-bottom: 1.4rem; }
+.info-row {
+  display: flex; gap: 0.85rem; align-items: flex-start; margin-bottom: 1.1rem;
 }
-.contact-info-item {
-  display: flex; gap: 0.8rem; align-items: flex-start;
-  margin-bottom: 1.2rem;
-}
-.contact-info-icon {
-  font-size: 1.1rem; line-height: 1.4;
-  flex-shrink: 0; width: 1.4rem; text-align: center;
-}
-.contact-info-text { display: flex; flex-direction: column; gap: 0.1rem; }
-.contact-info-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
-.contact-info-value { font-size: 0.92rem; color: rgba(255,255,255,0.8); }
-.contact-info-value a { color: var(--water); text-decoration: none; transition: color 0.15s; }
-.contact-info-value a:hover { color: #60a0ff; }
+.info-icon { font-size: 1.15rem; flex-shrink: 0; padding-top: 0.05rem; }
+.info-col { display: flex; flex-direction: column; gap: 0.1rem; }
+.info-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
+.info-val   { font-size: 0.9rem; color: rgba(255,255,255,0.8); }
+.info-val a { color: var(--cyan); }
+.info-val a:hover { color: #fff; }
 
-/* ── Map ──────────────────────────────────────────────── */
-.map-card { border-radius: 8px; overflow: hidden; border: 1px solid rgba(0,0,0,0.08); }
-.map-label {
-  padding: 1rem 1.2rem 0.5rem;
-  background: #fff;
-  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--mud);
+.map-card {
+  background: #fff; border: 1.5px solid var(--border);
+  border-radius: 16px; overflow: hidden;
 }
-#serviceMap { height: 320px; width: 100%; }
+.map-title {
+  padding: 1rem 1.2rem 0.6rem;
+  font-size: 0.7rem; font-weight: 800; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--blue);
+}
+#serviceMap { height: 300px; width: 100%; }
 
-/* ── Area pills ───────────────────────────────────────── */
-.area-pills {
-  background: #fff;
-  border: 1px solid rgba(0,0,0,0.06);
-  border-radius: 8px;
-  padding: 1.4rem;
+.area-card {
+  background: #fff; border: 1.5px solid var(--border);
+  border-radius: 16px; padding: 1.4rem;
 }
-.area-pills h4 {
-  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--mud); margin-bottom: 0.9rem;
+.area-title {
+  font-size: 0.7rem; font-weight: 800; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 0.9rem;
 }
 .pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .pill {
-  font-size: 0.78rem; font-weight: 500;
-  padding: 0.3rem 0.75rem;
-  background: var(--stone);
-  border: 1px solid rgba(0,0,0,0.08);
-  border-radius: 999px;
-  color: var(--text-2);
+  font-size: 0.78rem; font-weight: 600;
+  padding: 0.3rem 0.75rem; border-radius: 999px;
+  background: var(--off); border: 1.5px solid var(--border);
+  color: var(--text);
 }
 </style>
 </head>
 <body>
 
 <!-- ── Nav ────────────────────────────────────────────── -->
-<nav class="nav" id="nav">
+<nav class="nav">
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo" aria-label="Rabbit Power Washing home">
+    <a href="index.html" class="nav-logo">
       <img src="images/logo.png" alt="Rabbit Power Washing" class="nav-logo-img"
-           onerror="this.style.display='none';document.getElementById('logoFallback').style.display='flex'">
-      <span class="nav-logo-fallback" id="logoFallback">
-        <span class="nav-logo-mark">🐇</span>
-        RABBIT POWER WASHING
+           onerror="this.style.display='none';document.getElementById('lf').style.display='flex'">
+      <span class="nav-logo-fallback" id="lf">
+        <span class="nav-logo-emoji">🐇</span>
+        Rabbit Power Washing
       </span>
     </a>
-    <ul class="nav-links">
+    <ul class="nav-links" id="navLinks">
       <li><a href="index.html">Home</a></li>
       <li><a href="gallery.html">Gallery</a></li>
       <li><a href="contact.html" class="active">Contact</a></li>
@@ -180,33 +150,32 @@
     <div class="nav-right">
       <a href="tel:3017997475" class="nav-phone">301-799-7475</a>
       <a href="#form" class="nav-cta">Free Quote</a>
-      <button class="nav-burger" id="burger" aria-label="Open menu">
-        <span></span><span></span><span></span>
-      </button>
     </div>
+    <button class="nav-burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
 <!-- ── Page hero ──────────────────────────────────────── -->
 <section class="page-hero">
   <div class="page-hero-inner">
-    <span class="eyebrow">Free Estimates</span>
-    <h1 class="disp disp-lg">Get a <span class="blue">Quote</span></h1>
-    <p>Fill out the form and we'll get back to you within the hour. Or call us directly — we pick up.</p>
+    <span class="sec-label">Free Estimates</span>
+    <h1>Get a Quote</h1>
+    <p>Fill out the form — we'll respond within the hour. Or call us directly and we'll pick up.</p>
   </div>
 </section>
 
-<!-- ── Contact section ────────────────────────────────── -->
+<!-- ── Contact ────────────────────────────────────────── -->
 <section class="contact-sec">
   <div class="contact-inner">
 
-    <!-- ── Form ─────────────────────────────────────── -->
+    <!-- Form -->
     <div class="form-card rv" id="form">
       <h2>Request a Free Quote</h2>
-      <p>Tell us about your property and we'll send a flat-rate price — no hourly surprises.</p>
-
+      <p>Tell us about your property and what you need cleaned. We'll send a flat-rate price back fast.</p>
       <form id="contactForm" novalidate>
-        <div class="form-row">
+        <div class="row2">
           <div class="field">
             <label for="name">Your Name *</label>
             <input type="text" id="name" name="name" placeholder="John Smith" required>
@@ -216,7 +185,7 @@
             <input type="email" id="email" name="email" placeholder="john@email.com" required>
           </div>
         </div>
-        <div class="form-row">
+        <div class="row2">
           <div class="field">
             <label for="phone">Phone Number</label>
             <input type="tel" id="phone" name="phone" placeholder="301-555-0100">
@@ -234,56 +203,55 @@
           </div>
         </div>
         <div class="field">
-          <label for="message">Tell Us More</label>
-          <textarea id="message" name="message" placeholder="Address, size of area, any specific stains or concerns…"></textarea>
+          <label for="msg">Tell Us More</label>
+          <textarea id="msg" name="message" placeholder="Your address, size of area, specific stains or issues…"></textarea>
         </div>
         <button type="submit" class="submit-btn" id="submitBtn">Send Quote Request</button>
-        <div class="form-feedback" id="formFeedback"></div>
+        <div class="form-msg" id="formMsg"></div>
       </form>
     </div>
 
-    <!-- ── Sidebar ───────────────────────────────────── -->
-    <div class="contact-sidebar">
-
-      <div class="contact-info-card rv" style="transition-delay:.1s">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="info-card rv" style="transition-delay:.1s">
         <h3>Get in Touch</h3>
-        <div class="contact-info-item">
-          <span class="contact-info-icon">📞</span>
-          <div class="contact-info-text">
-            <span class="contact-info-label">Phone</span>
-            <span class="contact-info-value"><a href="tel:3017997475">301-799-7475</a></span>
+        <div class="info-row">
+          <span class="info-icon">📞</span>
+          <div class="info-col">
+            <span class="info-label">Phone</span>
+            <span class="info-val"><a href="tel:3017997475">301-799-7475</a></span>
           </div>
         </div>
-        <div class="contact-info-item">
-          <span class="contact-info-icon">⏰</span>
-          <div class="contact-info-text">
-            <span class="contact-info-label">Hours</span>
-            <span class="contact-info-value">Mon – Sat, 8am – 6pm</span>
+        <div class="info-row">
+          <span class="info-icon">⏰</span>
+          <div class="info-col">
+            <span class="info-label">Hours</span>
+            <span class="info-val">Mon – Sat, 8am – 6pm</span>
           </div>
         </div>
-        <div class="contact-info-item">
-          <span class="contact-info-icon">📍</span>
-          <div class="contact-info-text">
-            <span class="contact-info-label">Base</span>
-            <span class="contact-info-value">Rockville, MD</span>
+        <div class="info-row">
+          <span class="info-icon">📍</span>
+          <div class="info-col">
+            <span class="info-label">Based In</span>
+            <span class="info-val">Rockville, MD</span>
           </div>
         </div>
-        <div class="contact-info-item">
-          <span class="contact-info-icon">⚡</span>
-          <div class="contact-info-text">
-            <span class="contact-info-label">Response Time</span>
-            <span class="contact-info-value">Most quotes within 1 hour</span>
+        <div class="info-row">
+          <span class="info-icon">⚡</span>
+          <div class="info-col">
+            <span class="info-label">Response Time</span>
+            <span class="info-val">Most quotes within 1 hour</span>
           </div>
         </div>
       </div>
 
       <div class="map-card rv" style="transition-delay:.18s">
-        <p class="map-label">Service Area</p>
+        <p class="map-title">Service Area</p>
         <div id="serviceMap"></div>
       </div>
 
-      <div class="area-pills rv" style="transition-delay:.26s">
-        <h4>We Serve These Communities</h4>
+      <div class="area-card rv" style="transition-delay:.26s">
+        <p class="area-title">We Serve These Communities</p>
         <div class="pills">
           <span class="pill">Rockville</span>
           <span class="pill">Clarksburg</span>
@@ -300,7 +268,6 @@
           <span class="pill">Olney</span>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -308,12 +275,12 @@
 <!-- ── Footer ─────────────────────────────────────────── -->
 <footer class="footer">
   <div class="footer-inner">
-    <span class="footer-logo">🐇 RABBIT POWER WASHING</span>
-    <div class="footer-right">
-      <span>© 2025 Rabbit Power Washing. Rockville, MD.</span>
+    <span class="footer-brand">🐇 Rabbit Power Washing · Rockville, MD</span>
+    <div class="footer-links">
       <a href="index.html">Home</a>
       <a href="gallery.html">Gallery</a>
       <a href="tel:3017997475">301-799-7475</a>
+      <span style="color:rgba(255,255,255,0.2)">© 2025</span>
     </div>
   </div>
 </footer>
@@ -322,119 +289,85 @@
 <script>
 /* ── Page transitions ─────────────────────────────────── */
 document.querySelectorAll('a[href]').forEach(a => {
-  const href = a.getAttribute('href');
-  if (!href || href.startsWith('#') || href.startsWith('tel:') || href.startsWith('mailto:')) return;
+  const h = a.getAttribute('href');
+  if (!h || h.startsWith('#') || h.startsWith('tel:') || h.startsWith('mailto:')) return;
   a.addEventListener('click', e => {
     e.preventDefault();
-    document.body.style.transition = 'opacity 0.22s ease, transform 0.22s ease';
+    document.body.style.transition = 'opacity 0.2s, transform 0.2s';
     document.body.style.opacity = '0';
     document.body.style.transform = 'translateY(-8px)';
-    setTimeout(() => { window.location.href = href; }, 210);
+    setTimeout(() => location.href = h, 180);
   });
 });
 
 /* ── Scroll reveal ────────────────────────────────────── */
-const io = new IntersectionObserver(entries =>
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }),
-  { threshold: 0.1 }
+const obs = new IntersectionObserver(entries =>
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }), { threshold: 0.1 }
 );
-document.querySelectorAll('.rv').forEach(el => io.observe(el));
+document.querySelectorAll('.rv').forEach(el => obs.observe(el));
 
-/* ── Leaflet map ──────────────────────────────────────── */
-const map = L.map('serviceMap', { zoomControl: true, scrollWheelZoom: false });
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '© OpenStreetMap',
-  maxZoom: 14
-}).addTo(map);
+/* ── Map ──────────────────────────────────────────────── */
+const map = L.map('serviceMap', { scrollWheelZoom: false });
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap', maxZoom: 14 }).addTo(map);
 map.setView([39.13, -77.18], 10);
+[
+  [39.0837,-77.1527,'Rockville'],
+  [39.2394,-77.2644,'Clarksburg'],
+  [39.1434,-77.2014,'Gaithersburg'],
+  [39.1735,-77.2717,'Germantown'],
+  [39.0920,-77.2378,'North Potomac'],
+  [38.9784,-77.2097,'Potomac'],
+  [39.1773,-77.1951,'Montgomery Village'],
+  [39.2124,-77.3147,'Boyds'],
+  [39.2765,-77.0052,'Damascus'],
+  [38.9807,-77.0947,'Bethesda'],
+  [38.9846,-77.0633,'Chevy Chase'],
+  [38.9912,-77.0261,'Silver Spring'],
+  [39.1537,-77.0686,'Olney']
+].forEach(([lat,lng,name]) =>
+  L.circleMarker([lat,lng], {
+    radius: name==='Rockville'?9:6,
+    fillColor:'#1560D4', color:'#fff', weight:2,
+    opacity:1, fillOpacity: name==='Rockville'?1:0.75
+  }).addTo(map).bindTooltip(name, {direction:'top'})
+);
 
-const dot = L.circleMarker;
-const cities = [
-  [39.0837, -77.1527, 'Rockville'],
-  [39.2394, -77.2644, 'Clarksburg'],
-  [39.1434, -77.2014, 'Gaithersburg'],
-  [39.1735, -77.2717, 'Germantown'],
-  [39.0920, -77.2378, 'North Potomac'],
-  [38.9784, -77.2097, 'Potomac'],
-  [39.1773, -77.1951, 'Montgomery Village'],
-  [39.2124, -77.3147, 'Boyds'],
-  [39.2765, -77.0052, 'Damascus'],
-  [38.9807, -77.0947, 'Bethesda'],
-  [38.9846, -77.0633, 'Chevy Chase'],
-  [38.9912, -77.0261, 'Silver Spring'],
-  [39.1537, -77.0686, 'Olney']
-];
-
-cities.forEach(([lat, lng, name]) => {
-  L.circleMarker([lat, lng], {
-    radius: name === 'Rockville' ? 9 : 6,
-    fillColor: '#1B62E8',
-    color: '#fff',
-    weight: 2,
-    opacity: 1,
-    fillOpacity: name === 'Rockville' ? 1 : 0.75
-  }).addTo(map).bindTooltip(name, { permanent: false, direction: 'top' });
-});
-
-/* ── Contact form ─────────────────────────────────────── */
+/* ── Form submit ──────────────────────────────────────── */
 const form = document.getElementById('contactForm');
 const btn  = document.getElementById('submitBtn');
-const fb   = document.getElementById('formFeedback');
+const msg  = document.getElementById('formMsg');
 
 form.addEventListener('submit', async e => {
   e.preventDefault();
-  const name    = form.name.value.trim();
-  const email   = form.email.value.trim();
+  const name  = form.name.value.trim();
+  const email = form.email.value.trim();
   if (!name || !email) {
-    fb.textContent = 'Please fill in your name and email.';
-    fb.className = 'form-feedback error';
-    return;
+    msg.textContent = 'Please enter your name and email address.';
+    msg.className = 'form-msg err'; return;
   }
-
-  btn.disabled = true;
-  btn.textContent = 'Sending…';
-  fb.className = 'form-feedback';
-
+  btn.disabled = true; btn.textContent = 'Sending…'; msg.className = 'form-msg';
   try {
     const res = await fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        name,
-        email,
-        phone:   form.phone.value.trim(),
-        service: form.service.value,
-        message: form.message.value.trim()
-      })
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ name, email, phone: form.phone.value.trim(), service: form.service.value, message: form.msg.value.trim() })
     });
     const data = await res.json();
     if (res.ok && data.success) {
-      fb.textContent = '✔ Message sent! We\'ll be in touch within the hour.';
-      fb.className = 'form-feedback success';
-      form.reset();
-    } else {
-      throw new Error(data.error || 'Something went wrong.');
-    }
-  } catch (err) {
-    fb.textContent = '✖ ' + (err.message || 'Could not send. Please call us at 301-799-7475.');
-    fb.className = 'form-feedback error';
+      msg.textContent = '✓ Sent! We\'ll be in touch within the hour.';
+      msg.className = 'form-msg ok'; form.reset();
+    } else throw new Error(data.error || 'Something went wrong.');
+  } catch(err) {
+    msg.textContent = '✕ ' + (err.message || 'Could not send. Please call us at 301-799-7475.');
+    msg.className = 'form-msg err';
   } finally {
-    btn.disabled = false;
-    btn.textContent = 'Send Quote Request';
+    btn.disabled = false; btn.textContent = 'Send Quote Request';
   }
 });
 
 /* ── Mobile nav ───────────────────────────────────────── */
-const burger = document.getElementById('burger');
-const mLinks = document.querySelector('.nav-links');
-if (burger && mLinks) {
-  burger.addEventListener('click', () => {
-    const open = mLinks.classList.toggle('nav-mobile-open');
-    mLinks.style.cssText = open
-      ? 'display:flex;flex-direction:column;position:absolute;top:calc(100% + 0.6rem);left:0;right:0;background:rgba(10,16,10,0.97);backdrop-filter:blur(20px);padding:1.5rem;gap:0.5rem;border-radius:12px;border:1px solid rgba(255,255,255,0.1)'
-      : '';
-  });
-}
+document.getElementById('burger').addEventListener('click', () => {
+  document.getElementById('navLinks').classList.toggle('open');
+});
 </script>
 </body>
 </html>

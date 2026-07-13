@@ -4,288 +4,255 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Rabbit Power Washing — Rockville & Montgomery County MD</title>
-<meta name="description" content="Professional pressure washing in Rockville, Clarksburg & Montgomery County MD. Driveways, house washing, concrete, fences. Free flat-rate quotes.">
+<meta name="description" content="Professional pressure washing in Rockville, Clarksburg & Montgomery County MD. Driveways, house washing, concrete, fences. Free flat-rate quotes. Call 301-799-7475.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-
 <style>
-/* ── Hero ─────────────────────────────────────────────── */
+/* ── Hero ──────────────────────────────────────────────── */
 .hero {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
+  background: var(--navy);
+  padding: 5rem clamp(1.5rem,5vw,3rem) 0;
   overflow: hidden;
-  padding-top: calc(var(--nav-top) + var(--nav-h) + 3rem);
-  padding-bottom: 5rem;
+  position: relative;
 }
-.hero-bg { position: absolute; inset: 0; z-index: 0; }
-.hero-texture-dirty {
+.hero::before {
+  content: '';
   position: absolute; inset: 0;
-  background: #38301f;
-  filter: url(#f-dirty);
-}
-.hero-texture-clean {
-  position: absolute; inset: 0;
-  background: #b8b4aa;
-  filter: url(#f-clean);
-  clip-path: polygon(62% 0%, 100% 0%, 100% 100%, 52% 100%);
-  opacity: 0.9;
-}
-.hero-beam {
-  position: absolute; top: 0; bottom: 0; left: 56%;
-  width: 80px;
-  background: linear-gradient(to right, transparent, rgba(60,170,255,0.55), rgba(200,240,255,0.9), rgba(60,170,255,0.55), transparent);
-  transform: rotate(3deg) translateX(-50%);
-  filter: blur(4px);
-}
-.hero-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(105deg, rgba(8,14,8,0.82) 0%, rgba(8,14,8,0.70) 42%, rgba(8,14,8,0.20) 68%, rgba(8,14,8,0.04) 100%);
-}
-#heroCanvas {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
+  background: radial-gradient(ellipse 60% 80% at 70% 50%, rgba(21,96,212,0.18) 0%, transparent 70%);
   pointer-events: none;
-  opacity: 0.85;
 }
-.hero-content {
-  position: relative; z-index: 2;
+.hero-inner {
   max-width: 1200px; margin: 0 auto;
-  padding: 0 5vw; width: 100%;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+  align-items: flex-end; position: relative; z-index: 1;
 }
-.hero-eyebrow {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em;
-  text-transform: uppercase; color: rgba(255,255,255,0.5);
-  margin-bottom: 1.4rem;
-}
-.hero-eyebrow-dot {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--water);
-  animation: pulse 2s ease-in-out infinite;
-}
-@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.8)} }
-.hero-h1 {
-  font-family: 'Big Shoulders Display', sans-serif;
-  font-weight: 900;
-  font-size: clamp(4.2rem, 11vw, 10rem);
-  line-height: 0.88; letter-spacing: -0.01em;
-  color: #fff; text-wrap: balance; margin-bottom: 0.2em;
-}
-.hero-h1 .blue { color: var(--water); }
-.hero-sub {
-  font-size: clamp(1rem, 2vw, 1.3rem); font-weight: 400;
-  color: rgba(255,255,255,0.62); max-width: 440px;
-  line-height: 1.55; margin: 1.6rem 0 2.4rem;
-}
-.hero-actions { display: flex; flex-wrap: wrap; gap: 0.9rem; align-items: center; }
-.hero-actions .btn { font-size: 0.95rem; padding: 0.9rem 2rem; }
-.hero-phone {
-  font-size: 1rem; font-weight: 600;
-  color: rgba(255,255,255,0.55); transition: color 0.15s;
-}
-.hero-phone:hover { color: #fff; }
-.hero-badges {
-  display: flex; flex-wrap: wrap; gap: 1.5rem;
-  margin-top: 3.5rem; padding-top: 2rem;
-  border-top: 1px solid rgba(255,255,255,0.08);
-}
+.hero-text { padding-bottom: 5rem; }
 .hero-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(14,165,233,0.15); border: 1px solid rgba(14,165,233,0.3);
+  color: var(--cyan); font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 0.35rem 0.9rem; border-radius: 999px; margin-bottom: 1.4rem;
+}
+.hero-badge-dot { width: 6px; height: 6px; background: var(--cyan); border-radius: 50%; animation: blink 2s ease-in-out infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+.hero-h1 {
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 800; line-height: 1.06;
+  color: #fff; margin-bottom: 1.2rem;
+}
+.hero-h1 span { color: var(--cyan); }
+.hero-sub {
+  font-size: clamp(1rem, 1.8vw, 1.15rem); line-height: 1.7;
+  color: rgba(255,255,255,0.55); max-width: 440px; margin-bottom: 2.2rem;
+}
+.hero-btns { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-bottom: 2.5rem; }
+
+.hero-trust {
+  display: flex; flex-wrap: wrap; gap: 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.8rem;
+}
+.trust-item {
   display: flex; align-items: center; gap: 0.5rem;
-  font-size: 0.78rem; font-weight: 500;
-  color: rgba(255,255,255,0.45);
+  font-size: 0.82rem; font-weight: 600; color: rgba(255,255,255,0.45);
+}
+.trust-check { color: var(--green); font-size: 0.9rem; }
+
+/* Photo panel */
+.hero-photo {
+  position: relative; align-self: flex-end;
+}
+.hero-photo-frame {
+  border-radius: 16px 16px 0 0;
+  overflow: hidden;
+  box-shadow: 0 -20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.08);
+  background: #1a2d4e;
+  aspect-ratio: 4/3;
+}
+.hero-photo-frame img {
+  width: 100%; height: 100%; object-fit: cover;
+  display: block;
+}
+/* Fallback if no photo: show concrete texture with overlay */
+.hero-photo-fallback {
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, #2a3a2a 0%, #1a2d1a 50%, #0d2020 100%);
+  display: flex; align-items: center; justify-content: center;
+}
+.hero-photo-label {
+  position: absolute; bottom: 1rem; left: 1rem;
+  background: rgba(0,0,0,0.7); backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: #fff; font-size: 0.78rem; font-weight: 600;
+  padding: 0.5rem 0.85rem; border-radius: 8px;
+}
+.hero-photo-badge {
+  position: absolute; top: 1rem; right: 1rem;
+  background: var(--green); color: #fff;
+  font-size: 0.7rem; font-weight: 800;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.4rem 0.8rem; border-radius: 6px;
 }
 
-/* ── Stats strip ──────────────────────────────────────── */
-.stats-strip { background: var(--deep); padding: 3rem 5vw; }
+/* ── Trust bar ─────────────────────────────────────────── */
+.trust-bar { background: var(--blue); padding: 1.1rem clamp(1.5rem,5vw,3rem); }
+.trust-bar-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; flex-wrap: wrap; gap: 1rem;
+  justify-content: space-between;
+}
+.trust-bar-item {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-size: 0.85rem; font-weight: 700; color: rgba(255,255,255,0.9);
+}
+.trust-bar-sep { color: rgba(255,255,255,0.25); }
+@media (max-width: 600px) { .trust-bar-sep { display: none; } }
+
+/* ── Stats ─────────────────────────────────────────────── */
+.stats-sec { background: var(--off); padding: 4rem clamp(1.5rem,5vw,3rem); }
 .stats-grid {
   max-width: 1200px; margin: 0 auto;
   display: grid; grid-template-columns: repeat(3,1fr);
-  border: 1px solid rgba(255,255,255,0.07); border-radius: 4px; overflow: hidden;
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
 }
-.stat-item {
-  padding: 2.5rem 2rem; text-align: center;
-  border-right: 1px solid rgba(255,255,255,0.07);
+.stat-box {
+  background: #fff; padding: 2.5rem 2rem; text-align: center;
 }
-.stat-item:last-child { border-right: none; }
-.stat-num {
-  font-family: 'Big Shoulders Display', sans-serif; font-weight: 900;
-  font-size: clamp(2.8rem, 5vw, 4rem);
-  color: var(--water); line-height: 1; display: block; margin-bottom: 0.35rem;
+.stat-n {
+  font-size: clamp(2.5rem, 4vw, 3.5rem); font-weight: 800;
+  color: var(--blue); line-height: 1; display: block; margin-bottom: 0.4rem;
 }
-.stat-label {
-  font-size: 0.8rem; font-weight: 500;
-  color: rgba(255,255,255,0.4);
-  letter-spacing: 0.06em; text-transform: uppercase;
-}
+.stat-l { font-size: 0.82rem; font-weight: 600; color: var(--muted); letter-spacing: 0.04em; }
 
-/* ── Services ─────────────────────────────────────────── */
-.services-sec { background: var(--stone); }
+/* ── Services ──────────────────────────────────────────── */
+.services-sec { background: var(--white); }
+.services-head { max-width: 1200px; margin: 0 auto 3rem; }
 .services-grid {
-  display: grid; grid-template-columns: repeat(2,1fr);
-  gap: 1.25rem; margin-top: 0;
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5rem;
 }
-.service-card {
-  background: #fff; border: 1px solid rgba(0,0,0,0.06);
-  border-radius: 6px; padding: 2.2rem;
-  transition: transform 0.2s, box-shadow 0.2s;
+.svc-card {
+  background: var(--off); border: 1.5px solid var(--border);
+  border-radius: 12px; padding: 2rem;
+  display: flex; flex-direction: column; gap: 0.6rem;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
 }
-.service-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
-.service-icon {
-  width: 44px; height: 44px;
-  background: linear-gradient(135deg, var(--water) 0%, #5290ff 100%);
-  border-radius: 8px; display: flex; align-items: center;
-  justify-content: center; margin-bottom: 1.2rem;
+.svc-card:hover {
+  border-color: var(--blue); transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(21,96,212,0.12);
 }
-.service-icon svg { width: 22px; height: 22px; fill: #fff; }
-.service-card h3 {
-  font-family: 'Big Shoulders Display', sans-serif; font-weight: 900;
-  font-size: 1.4rem; letter-spacing: -0.01em;
-  margin-bottom: 0.5rem; color: var(--deep);
+.svc-icon {
+  width: 48px; height: 48px; border-radius: 10px;
+  background: linear-gradient(135deg, var(--blue) 0%, var(--cyan) 100%);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 0.4rem;
 }
-.service-card p { font-size: 0.88rem; color: var(--text-2); line-height: 1.6; margin-bottom: 1.2rem; }
-.service-link {
-  font-size: 0.82rem; font-weight: 600; color: var(--water);
-  letter-spacing: 0.04em; transition: letter-spacing 0.15s;
-  display: inline-flex; align-items: center; gap: 0.3rem;
+.svc-icon svg { width: 24px; height: 24px; fill: #fff; }
+.svc-card h3 { font-size: 1.15rem; font-weight: 800; color: var(--navy); }
+.svc-card p  { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+.svc-link {
+  font-size: 0.82rem; font-weight: 700; color: var(--blue);
+  margin-top: auto; display: inline-flex; align-items: center; gap: 0.3rem;
+  transition: gap 0.15s;
 }
-.service-link:hover { letter-spacing: 0.06em; }
+.svc-link:hover { gap: 0.55rem; }
 
-/* ── Before/After ─────────────────────────────────────── */
-.ba-sec { background: var(--deep); padding: 6rem 5vw; }
-.ba-intro {
-  color: rgba(255,255,255,0.45); font-size: 0.9rem;
-  max-width: 500px; margin-top: 0.8rem; line-height: 1.6;
-}
+/* ── B/A section ───────────────────────────────────────── */
+.ba-sec { background: var(--navy); padding: 5.5rem clamp(1.5rem,5vw,3rem); }
+.ba-header { max-width: 1200px; margin: 0 auto 3rem; }
 .ba-wrap {
-  position: relative; border-radius: 8px; overflow: hidden;
-  user-select: none; cursor: col-resize;
-  max-width: 900px; aspect-ratio: 16/8; margin-top: 3rem;
+  max-width: 1100px; margin: 0 auto;
+  position: relative; border-radius: 16px; overflow: hidden;
+  cursor: col-resize; user-select: none; aspect-ratio: 16/7;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.5);
 }
 .ba-before {
   position: absolute; inset: 0;
   background: url('images/before-concrete.jpg') center/cover no-repeat;
-  /* fallback while image loads */
-  background-color: #3d3524;
+  background-color: #2a2018;
 }
-.ba-after  {
+.ba-after {
   position: absolute; inset: 0;
   background: url('images/after-concrete.jpg') center/cover no-repeat;
-  background-color: #bbb7af;
+  background-color: #b8b4ac;
   clip-path: inset(0 50% 0 0);
 }
-.ba-label {
-  position: absolute; top: 1rem; font-size: 0.68rem; font-weight: 700;
-  letter-spacing: 0.14em; text-transform: uppercase;
-  padding: 0.3rem 0.65rem; border-radius: 3px; z-index: 5;
+.ba-pill {
+  position: absolute; top: 1.2rem; z-index: 4;
+  font-size: 0.65rem; font-weight: 800; letter-spacing: 0.15em;
+  text-transform: uppercase; padding: 0.3rem 0.7rem; border-radius: 999px;
 }
-.ba-label-before { left: 1rem; background: rgba(0,0,0,0.6); color: rgba(255,255,255,0.7); }
-.ba-label-after  { right: 1rem; background: rgba(27,98,232,0.85); color: #fff; }
-.ba-divider {
+.ba-pill.before { left: 1.2rem; background: rgba(0,0,0,0.7); color: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.15); }
+.ba-pill.after  { right: 1.2rem; background: var(--blue); color: #fff; }
+.ba-line {
   position: absolute; top: 0; bottom: 0; left: 50%;
-  width: 3px; background: var(--water); z-index: 4;
-  transform: translateX(-50%);
-  box-shadow: 0 0 12px rgba(27,98,232,0.8);
+  width: 2px; background: #fff; z-index: 4; transform: translateX(-50%);
+  box-shadow: 0 0 16px rgba(255,255,255,0.6);
 }
-.ba-handle {
-  position: absolute; top: 50%; left: 50%;
-  width: 40px; height: 40px; border-radius: 50%;
-  background: var(--water); border: 3px solid #fff;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
-  transform: translate(-50%,-50%); z-index: 5;
+.ba-knob {
+  position: absolute; top: 50%; left: 50%; z-index: 5;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: #fff; border: none;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  transform: translate(-50%,-50%);
   display: flex; align-items: center; justify-content: center;
 }
-.ba-handle svg { width: 18px; height: 18px; stroke: #fff; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.ba-knob svg { width: 20px; height: 20px; stroke: var(--navy); fill: none; stroke-width: 2.5; stroke-linecap: round; }
 
-/* ── Reasons ──────────────────────────────────────────── */
-.reasons-sec { background: var(--stone); }
-.reasons-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; margin-top: 3rem; }
-.reason-card { display: flex; flex-direction: column; gap: 0.75rem; }
-.reason-num {
-  font-family: 'Big Shoulders Display', sans-serif; font-weight: 900;
-  font-size: 2.4rem; color: var(--water); line-height: 1; opacity: 0.3;
+/* ── Why us ────────────────────────────────────────────── */
+.why-sec { background: var(--off); }
+.why-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; margin-top: 3rem; }
+.why-card {
+  background: #fff; border: 1.5px solid var(--border);
+  border-radius: 12px; padding: 2rem;
 }
-.reason-card h3 {
-  font-family: 'Big Shoulders Display', sans-serif; font-weight: 900;
-  font-size: 1.25rem; color: var(--deep);
+.why-icon-wrap {
+  width: 52px; height: 52px; border-radius: 12px;
+  background: var(--sky); display: flex; align-items: center;
+  justify-content: center; margin-bottom: 1rem;
 }
-.reason-card p { font-size: 0.88rem; color: var(--text-2); line-height: 1.6; }
+.why-icon-wrap svg { width: 26px; height: 26px; stroke: var(--blue); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.why-card h3 { font-size: 1.05rem; font-weight: 800; color: var(--navy); margin-bottom: 0.5rem; }
+.why-card p  { font-size: 0.87rem; color: var(--muted); line-height: 1.65; }
 
-/* ── CTA strip ────────────────────────────────────────── */
-.cta-strip { background: var(--water); padding: 5rem 5vw; text-align: center; }
-.cta-strip p { color: rgba(255,255,255,0.72); font-size: 1rem; max-width: 480px; margin: 0.6rem auto 2rem; }
-.cta-actions { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+/* ── CTA strip ─────────────────────────────────────────── */
+.cta-strip { background: var(--navy); padding: 5rem clamp(1.5rem,5vw,3rem); text-align: center; }
+.cta-strip h2 { font-size: clamp(1.9rem, 3.5vw, 2.8rem); font-weight: 800; color: #fff; margin-bottom: 0.8rem; }
+.cta-strip p  { color: rgba(255,255,255,0.5); font-size: 1rem; max-width: 440px; margin: 0 auto 2.2rem; line-height: 1.65; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
 
-/* ── Responsive ───────────────────────────────────────── */
-@media (max-width: 900px) { .reasons-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
-@media (max-width: 700px) {
+/* ── Responsive ────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-photo { display: none; }
+  .hero-text { padding-bottom: 4rem; }
+  .why-grid { grid-template-columns: 1fr; }
   .services-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
   .stats-grid { grid-template-columns: 1fr; }
-  .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
-  .stat-item:last-child { border-bottom: none; }
   .ba-wrap { aspect-ratio: 4/3; }
 }
 </style>
 </head>
 <body>
 
-<!-- ── SVG Filter Definitions ─────────────────────────── -->
-<svg width="0" height="0" style="position:absolute;pointer-events:none;overflow:hidden" aria-hidden="true">
-  <defs>
-    <filter id="f-dirty" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
-      <feTurbulence type="fractalNoise" baseFrequency="0.72 0.52" numOctaves="5" seed="3" stitchTiles="stitch" result="t"/>
-      <feComponentTransfer in="t">
-        <feFuncR type="linear" slope="0.22" intercept="0.10"/>
-        <feFuncG type="linear" slope="0.18" intercept="0.08"/>
-        <feFuncB type="linear" slope="0.12" intercept="0.04"/>
-        <feFuncA type="linear" slope="0" intercept="1"/>
-      </feComponentTransfer>
-    </filter>
-    <filter id="f-clean" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
-      <feTurbulence type="fractalNoise" baseFrequency="0.60 0.44" numOctaves="4" seed="9" stitchTiles="stitch" result="t"/>
-      <feComponentTransfer in="t">
-        <feFuncR type="linear" slope="0.14" intercept="0.64"/>
-        <feFuncG type="linear" slope="0.13" intercept="0.62"/>
-        <feFuncB type="linear" slope="0.11" intercept="0.58"/>
-        <feFuncA type="linear" slope="0" intercept="1"/>
-      </feComponentTransfer>
-    </filter>
-    <filter id="f-dirty-ba" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
-      <feTurbulence type="fractalNoise" baseFrequency="0.78 0.56" numOctaves="6" seed="12" stitchTiles="stitch" result="t"/>
-      <feComponentTransfer in="t">
-        <feFuncR type="linear" slope="0.24" intercept="0.09"/>
-        <feFuncG type="linear" slope="0.20" intercept="0.07"/>
-        <feFuncB type="linear" slope="0.14" intercept="0.04"/>
-        <feFuncA type="linear" slope="0" intercept="1"/>
-      </feComponentTransfer>
-    </filter>
-    <filter id="f-clean-ba" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
-      <feTurbulence type="fractalNoise" baseFrequency="0.63 0.46" numOctaves="5" seed="19" stitchTiles="stitch" result="t"/>
-      <feComponentTransfer in="t">
-        <feFuncR type="linear" slope="0.12" intercept="0.68"/>
-        <feFuncG type="linear" slope="0.11" intercept="0.66"/>
-        <feFuncB type="linear" slope="0.09" intercept="0.62"/>
-        <feFuncA type="linear" slope="0" intercept="1"/>
-      </feComponentTransfer>
-    </filter>
-  </defs>
-</svg>
-
-<!-- ── Liquid Glass Pill Nav ──────────────────────────── -->
-<nav class="nav" id="nav">
+<!-- ── Nav ────────────────────────────────────────────── -->
+<nav class="nav">
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo" aria-label="Rabbit Power Washing home">
+    <a href="index.html" class="nav-logo">
       <img src="images/logo.png" alt="Rabbit Power Washing" class="nav-logo-img"
-           onerror="this.style.display='none';document.getElementById('logoFallback').style.display='flex'">
-      <span class="nav-logo-fallback" id="logoFallback">
-        <span class="nav-logo-mark">🐇</span>
-        RABBIT POWER WASHING
+           onerror="this.style.display='none';document.getElementById('lf').style.display='flex'">
+      <span class="nav-logo-fallback" id="lf">
+        <span class="nav-logo-emoji">🐇</span>
+        Rabbit Power Washing
       </span>
     </a>
-    <ul class="nav-links">
+    <ul class="nav-links" id="navLinks">
       <li><a href="index.html" class="active">Home</a></li>
       <li><a href="gallery.html">Gallery</a></li>
       <li><a href="contact.html">Contact</a></li>
@@ -293,142 +260,162 @@
     <div class="nav-right">
       <a href="tel:3017997475" class="nav-phone">301-799-7475</a>
       <a href="contact.html" class="nav-cta">Free Quote</a>
-      <button class="nav-burger" id="burger" aria-label="Open menu">
-        <span></span><span></span><span></span>
-      </button>
     </div>
+    <button class="nav-burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
 <!-- ── Hero ───────────────────────────────────────────── -->
-<section class="hero" id="top">
-  <div class="hero-bg">
-    <div class="hero-texture-dirty"></div>
-    <div class="hero-texture-clean"></div>
-    <div class="hero-beam"></div>
-    <div class="hero-overlay"></div>
-    <canvas id="heroCanvas"></canvas>
-  </div>
-  <div class="hero-content">
-    <p class="hero-eyebrow">
-      <span class="hero-eyebrow-dot"></span>
-      Rockville &amp; Montgomery County, MD
-    </p>
-    <h1 class="hero-h1">
-      WE MAKE<br>IT LOOK<br><span class="blue">NEW AGAIN</span>
-    </h1>
-    <p class="hero-sub">
-      Professional pressure washing that restores your property's curb appeal. Flat-rate pricing — no surprises.
-    </p>
-    <div class="hero-actions">
-      <a href="contact.html" class="btn btn-blue">Get a Free Quote</a>
-      <a href="gallery.html" class="btn btn-ghost">See Our Work</a>
-      <a href="tel:3017997475" class="hero-phone">📞 301-799-7475</a>
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Serving Montgomery County, MD
+      </div>
+      <h1 class="hero-h1">
+        Rockville's <span>Go-To</span><br>
+        Pressure Washing<br>
+        Crew
+      </h1>
+      <p class="hero-sub">
+        We blast years of grime, mold, and stains off driveways, siding, fences, and concrete. Flat-rate pricing — no hourly surprises.
+      </p>
+      <div class="hero-btns">
+        <a href="contact.html" class="btn btn-blue">Get a Free Quote</a>
+        <a href="tel:3017997475" class="btn btn-outline">📞 Call Now</a>
+      </div>
+      <div class="hero-trust">
+        <span class="trust-item"><span class="trust-check">✓</span> Licensed &amp; Insured</span>
+        <span class="trust-item"><span class="trust-check">✓</span> Same-Week Scheduling</span>
+        <span class="trust-item"><span class="trust-check">✓</span> Satisfaction Guaranteed</span>
+      </div>
     </div>
-    <div class="hero-badges">
-      <span class="hero-badge">✔ Licensed &amp; Insured</span>
-      <span class="hero-badge">✔ Same-Week Scheduling</span>
-      <span class="hero-badge">✔ 100% Satisfaction Guarantee</span>
+    <div class="hero-photo">
+      <div class="hero-photo-frame">
+        <img src="images/driveway-ba.jpg" alt="Driveway before and after pressure washing"
+             onerror="this.style.display='none'">
+      </div>
+      <div class="hero-photo-label">Rockville, MD — Driveway restoration</div>
+      <div class="hero-photo-badge">Real Result</div>
     </div>
   </div>
 </section>
 
-<!-- ── Stats Strip ─────────────────────────────────────── -->
-<section class="stats-strip">
+<!-- ── Trust bar ──────────────────────────────────────── -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <span class="trust-bar-item">⭐ 500+ Jobs Completed</span>
+    <span class="trust-bar-sep">|</span>
+    <span class="trust-bar-item">🛡 Fully Licensed &amp; Insured</span>
+    <span class="trust-bar-sep">|</span>
+    <span class="trust-bar-item">📍 12+ Cities in Montgomery County</span>
+    <span class="trust-bar-sep">|</span>
+    <span class="trust-bar-item">💬 5-Star Rated</span>
+  </div>
+</div>
+
+<!-- ── Stats ──────────────────────────────────────────── -->
+<section class="stats-sec">
   <div class="stats-grid">
-    <div class="stat-item rv"><span class="stat-num">500+</span><span class="stat-label">Jobs Completed</span></div>
-    <div class="stat-item rv" style="transition-delay:.1s"><span class="stat-num">12+</span><span class="stat-label">Cities Served</span></div>
-    <div class="stat-item rv" style="transition-delay:.2s"><span class="stat-num">5★</span><span class="stat-label">Average Rating</span></div>
+    <div class="stat-box rv"><span class="stat-n">500+</span><span class="stat-l">Jobs Completed</span></div>
+    <div class="stat-box rv" style="transition-delay:.08s"><span class="stat-n">12+</span><span class="stat-l">Cities Served</span></div>
+    <div class="stat-box rv" style="transition-delay:.16s"><span class="stat-n">5★</span><span class="stat-l">Customer Rating</span></div>
   </div>
 </section>
 
 <!-- ── Services ───────────────────────────────────────── -->
 <section class="sec services-sec">
-  <div class="sec-inner">
-    <div class="sec-head rv">
-      <span class="eyebrow">What We Clean</span>
-      <h2 class="disp disp-lg">Our Services</h2>
+  <div class="services-head rv">
+    <span class="sec-label">What We Do</span>
+    <h2 class="sec-h2">Four Services. One Crew.</h2>
+    <p class="sec-p">Everything your property needs to look its absolute best — done right the first time.</p>
+  </div>
+  <div class="services-grid">
+    <div class="svc-card rv" style="transition-delay:.05s">
+      <div class="svc-icon">
+        <svg viewBox="0 0 24 24"><path d="M3 17h18v2H3v-2zm0-5h18v2H3v-2zM3 7h18v2H3V7z"/></svg>
+      </div>
+      <h3>Driveway Cleaning</h3>
+      <p>Oil stains, tire marks, algae, mildew — blasted away in under 2 hours. We use hot water for the deepest clean possible.</p>
+      <a href="contact.html" class="svc-link">Get a quote →</a>
     </div>
-    <div class="services-grid">
-      <div class="service-card rv" style="transition-delay:.05s">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24"><path d="M3 17h18v2H3v-2zm0-5h18v2H3v-2zM3 7h18v2H3V7z"/></svg>
-        </div>
-        <h3>Driveway Cleaning</h3>
-        <p>Oil stains, tire marks, algae, and mildew disappear with our high-pressure hot wash. Most driveways done in under 2 hours.</p>
-        <a href="contact.html" class="service-link">Get a quote →</a>
+    <div class="svc-card rv" style="transition-delay:.10s">
+      <div class="svc-icon">
+        <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
       </div>
-      <div class="service-card rv" style="transition-delay:.10s">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-        </div>
-        <h3>House Washing</h3>
-        <p>Soft-wash removes dirt, mold, and mildew from vinyl, brick, and stucco without damaging your siding or paint.</p>
-        <a href="contact.html" class="service-link">Get a quote →</a>
+      <h3>House Washing</h3>
+      <p>Soft-wash removes mold, mildew, and dirt from vinyl, brick, and stucco — without damaging your siding or paint.</p>
+      <a href="contact.html" class="svc-link">Get a quote →</a>
+    </div>
+    <div class="svc-card rv" style="transition-delay:.15s">
+      <div class="svc-icon">
+        <svg viewBox="0 0 24 24"><path d="M2 6h20v2H2V6zm0 5h20v2H2v-2zm0 5h20v2H2v-2z"/></svg>
       </div>
-      <div class="service-card rv" style="transition-delay:.15s">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24"><path d="M2 6h20v2H2V6zm0 5h20v2H2v-2zm0 5h20v2H2v-2z"/></svg>
-        </div>
-        <h3>Concrete Flatwork</h3>
-        <p>Sidewalks, pool decks, patios, and parking pads restored to original color. Surface sealing available on request.</p>
-        <a href="contact.html" class="service-link">Get a quote →</a>
+      <h3>Concrete Flatwork</h3>
+      <p>Sidewalks, pool decks, patios, parking pads — restored to original color. Sealing available on request.</p>
+      <a href="contact.html" class="svc-link">Get a quote →</a>
+    </div>
+    <div class="svc-card rv" style="transition-delay:.20s">
+      <div class="svc-icon">
+        <svg viewBox="0 0 24 24"><path d="M4 3v18H2V3h2zm4 0v18H6V3h2zm4 0v18h-2V3h2zm4 0v18h-2V3h2zm4 0v18h-2V3h2z"/></svg>
       </div>
-      <div class="service-card rv" style="transition-delay:.20s">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24"><path d="M4 3v18H2V3h2zm4 0v4H6V3h2zm0 6v4H6V9h2zm0 6v6H6v-6h2zm4-12v4h-2V3h2zm0 6v4h-2V9h2zm0 6v6h-2v-6h2zm4-12v4h-2V3h2zm0 6v4h-2V9h2zm0 6v6h-2v-6h2zm4-12v18h-2V3h2z"/></svg>
-        </div>
-        <h3>Fence Washing</h3>
-        <p>Wood, vinyl, and chain-link fences cleaned and brightened. Removes green algae, grey weathering, and black mold.</p>
-        <a href="contact.html" class="service-link">Get a quote →</a>
-      </div>
+      <h3>Fence Washing</h3>
+      <p>Wood, vinyl, and chain-link fences cleaned and brightened. Removes green algae, grey weathering, and black mold.</p>
+      <a href="contact.html" class="svc-link">Get a quote →</a>
     </div>
   </div>
 </section>
 
 <!-- ── Before / After ─────────────────────────────────── -->
 <section class="ba-sec">
-  <div class="sec-inner">
-    <div class="sec-head rv">
-      <span class="eyebrow" style="color:rgba(255,255,255,0.35)">The Difference</span>
-      <h2 class="disp disp-lg" style="color:#fff">Before <span class="blue">&amp;</span> After</h2>
-      <p class="ba-intro">Drag the handle to see the transformation. Every job, every time.</p>
-    </div>
-    <div class="ba-wrap rv" id="baSlider" style="transition-delay:.15s">
-      <div class="ba-before"></div>
-      <div class="ba-after" id="baAfter"></div>
-      <span class="ba-label ba-label-before">BEFORE</span>
-      <span class="ba-label ba-label-after">AFTER</span>
-      <div class="ba-divider" id="baDivider"></div>
-      <div class="ba-handle" id="baHandle">
-        <svg viewBox="0 0 20 20"><polyline points="6,4 2,10 6,16"/><polyline points="14,4 18,10 14,16"/></svg>
-      </div>
+  <div class="ba-header rv">
+    <span class="sec-label light">The Transformation</span>
+    <h2 class="sec-h2 light">Drag to See the Difference</h2>
+    <p class="sec-p light">Every job looks like this. That's the Rabbit standard.</p>
+  </div>
+  <div class="ba-wrap rv" id="baWrap" style="transition-delay:.12s">
+    <div class="ba-before" id="baBefore"></div>
+    <div class="ba-after"  id="baAfter"></div>
+    <span class="ba-pill before">Before</span>
+    <span class="ba-pill after">After</span>
+    <div class="ba-line" id="baLine"></div>
+    <div class="ba-knob" id="baKnob">
+      <svg viewBox="0 0 20 20"><polyline points="6,4 2,10 6,16"/><polyline points="14,4 18,10 14,16"/></svg>
     </div>
   </div>
 </section>
 
 <!-- ── Why Rabbit ─────────────────────────────────────── -->
-<section class="sec reasons-sec">
+<section class="sec why-sec">
   <div class="sec-inner">
-    <div class="sec-head rv">
-      <span class="eyebrow">Why Choose Us</span>
-      <h2 class="disp disp-lg">Built on Results,<br>Not Promises</h2>
+    <div class="rv">
+      <span class="sec-label">Why Choose Us</span>
+      <h2 class="sec-h2">No fluff. Just results.</h2>
     </div>
-    <div class="reasons-grid">
-      <div class="reason-card rv">
-        <span class="reason-num">01</span>
-        <h3>Flat-Rate Pricing</h3>
-        <p>We give you one number upfront. No hourly surprises, no add-ons. Know exactly what you're paying before we start.</p>
+    <div class="why-grid">
+      <div class="why-card rv" style="transition-delay:.05s">
+        <div class="why-icon-wrap">
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6L22 9.3l-5 4.9 1.2 6.8L12 17l-6.2 4 1.2-6.8L2 9.3 9.1 8z"/></svg>
+        </div>
+        <h3>Flat-Rate, Always</h3>
+        <p>We price the whole job upfront. No per-hour billing, no add-on surprises. Know exactly what you're paying before we show up.</p>
       </div>
-      <div class="reason-card rv" style="transition-delay:.12s">
-        <span class="reason-num">02</span>
-        <h3>Local Montgomery County Team</h3>
-        <p>We live and work in the same communities we serve — Rockville, Clarksburg, Gaithersburg, and beyond.</p>
+      <div class="why-card rv" style="transition-delay:.12s">
+        <div class="why-icon-wrap">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>Same-Week Service</h3>
+        <p>Most customers get on the schedule within 3 days. We're local — Rockville-based — so travel time is never the bottleneck.</p>
       </div>
-      <div class="reason-card rv" style="transition-delay:.24s">
-        <span class="reason-num">03</span>
-        <h3>Done Right or We Come Back</h3>
-        <p>If you're not satisfied, we return and fix it — no questions, no argument. That's the Rabbit guarantee.</p>
+      <div class="why-card rv" style="transition-delay:.24s">
+        <div class="why-icon-wrap">
+          <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h3>We Come Back if Needed</h3>
+        <p>Not happy? We return and make it right — no questions, no argument. That's the Rabbit guarantee on every single job.</p>
       </div>
     </div>
   </div>
@@ -436,25 +423,23 @@
 
 <!-- ── CTA Strip ──────────────────────────────────────── -->
 <section class="cta-strip">
-  <div class="sec-inner">
-    <h2 class="disp disp-lg rv" style="color:#fff">Ready to See the Difference?</h2>
-    <p class="rv" style="transition-delay:.1s">Most quotes back within the hour. Scheduling available this week.</p>
-    <div class="cta-actions rv" style="transition-delay:.2s">
-      <a href="contact.html" class="btn btn-white">Get a Free Quote</a>
-      <a href="tel:3017997475" class="btn btn-ghost">Call 301-799-7475</a>
-    </div>
+  <h2 class="rv">Ready to see the difference?</h2>
+  <p class="rv" style="transition-delay:.08s">Get a flat-rate quote in the next hour. No commitment required.</p>
+  <div class="cta-row rv" style="transition-delay:.16s">
+    <a href="contact.html" class="btn btn-blue">Get a Free Quote</a>
+    <a href="tel:3017997475" class="btn btn-outline">Call 301-799-7475</a>
   </div>
 </section>
 
 <!-- ── Footer ─────────────────────────────────────────── -->
 <footer class="footer">
   <div class="footer-inner">
-    <span class="footer-logo">🐇 RABBIT POWER WASHING</span>
-    <div class="footer-right">
-      <span>© 2025 Rabbit Power Washing. Rockville, MD.</span>
+    <span class="footer-brand">🐇 Rabbit Power Washing · Rockville, MD</span>
+    <div class="footer-links">
       <a href="gallery.html">Gallery</a>
       <a href="contact.html">Contact</a>
       <a href="tel:3017997475">301-799-7475</a>
+      <span style="color:rgba(255,255,255,0.2)">© 2025</span>
     </div>
   </div>
 </footer>
@@ -462,113 +447,60 @@
 <script>
 /* ── Page transitions ─────────────────────────────────── */
 document.querySelectorAll('a[href]').forEach(a => {
-  const href = a.getAttribute('href');
-  if (!href || href.startsWith('#') || href.startsWith('tel:') || href.startsWith('mailto:')) return;
+  const h = a.getAttribute('href');
+  if (!h || h.startsWith('#') || h.startsWith('tel:') || h.startsWith('mailto:')) return;
   a.addEventListener('click', e => {
     e.preventDefault();
-    document.body.style.transition = 'opacity 0.22s ease, transform 0.22s ease';
+    document.body.style.transition = 'opacity 0.2s, transform 0.2s';
     document.body.style.opacity = '0';
     document.body.style.transform = 'translateY(-8px)';
-    setTimeout(() => { window.location.href = href; }, 210);
+    setTimeout(() => location.href = h, 180);
   });
 });
 
 /* ── Scroll reveal ────────────────────────────────────── */
-const io = new IntersectionObserver(entries =>
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }),
-  { threshold: 0.12 }
+new IntersectionObserver(entries =>
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); } }),
+  { threshold: 0.1 }
+).observe.bind(new IntersectionObserver(entries =>
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); } }),
+  { threshold: 0.1 }
+));
+const revealObs = new IntersectionObserver(entries =>
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }),
+  { threshold: 0.1 }
 );
-document.querySelectorAll('.rv').forEach(el => io.observe(el));
+document.querySelectorAll('.rv').forEach(el => revealObs.observe(el));
 
-/* ── Hero spray canvas ────────────────────────────────── */
+/* ── Before/After slider ──────────────────────────────── */
 (function() {
-  const canvas = document.getElementById('heroCanvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let W, H;
-  function resize() {
-    W = canvas.width  = canvas.offsetWidth;
-    H = canvas.height = canvas.offsetHeight;
-  }
-  resize();
-  window.addEventListener('resize', resize);
-
-  const BEAM = 0.57;
-  const MAX = 140;
-  const pts = [];
-  function mkPt() {
-    return {
-      x: W * BEAM + (Math.random() - 0.5) * 10,
-      y: Math.random() * H,
-      vx: (Math.random() * 3.5 + 0.8) * (Math.random() > 0.35 ? 1 : -0.4),
-      vy: (Math.random() - 0.5) * 2.5,
-      life: Math.random(),
-      decay: 0.016 + Math.random() * 0.024,
-      r: 0.5 + Math.random() * 2.2,
-      bright: Math.random() > 0.55
-    };
-  }
-  for (let i = 0; i < MAX; i++) pts.push(mkPt());
-
-  function frame() {
-    ctx.clearRect(0, 0, W, H);
-    pts.forEach((p, i) => {
-      p.x += p.vx; p.y += p.vy; p.vy += 0.045; p.life -= p.decay;
-      if (p.life <= 0 || p.x < 0 || p.x > W || p.y < 0 || p.y > H) { pts[i] = mkPt(); return; }
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      const a = p.life * 0.7;
-      ctx.fillStyle = p.bright ? `rgba(200,230,255,${a})` : `rgba(90,170,255,${a * 0.65})`;
-      ctx.fill();
-    });
-    requestAnimationFrame(frame);
-  }
-  frame();
-})();
-
-/* ── Before / After slider ────────────────────────────── */
-(function() {
-  const wrap    = document.getElementById('baSlider');
-  const after   = document.getElementById('baAfter');
-  const divider = document.getElementById('baDivider');
-  const handle  = document.getElementById('baHandle');
+  const wrap  = document.getElementById('baWrap');
+  const after = document.getElementById('baAfter');
+  const line  = document.getElementById('baLine');
+  const knob  = document.getElementById('baKnob');
   if (!wrap) return;
-  let dragging = false;
+  let drag = false;
 
-  function setPos(x) {
-    const rect = wrap.getBoundingClientRect();
-    const pct = Math.max(3, Math.min(97, (x - rect.left) / rect.width * 100));
-    after.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
-    divider.style.left = pct + '%';
-    handle.style.left  = pct + '%';
+  function pos(x) {
+    const r = wrap.getBoundingClientRect();
+    const p = Math.max(4, Math.min(96, (x - r.left) / r.width * 100));
+    after.style.clipPath = `inset(0 ${100-p}% 0 0)`;
+    line.style.left = knob.style.left = p + '%';
   }
 
-  window.addEventListener('load', () => {
-    const rect = wrap.getBoundingClientRect();
-    setPos(rect.left + rect.width * 0.5);
-  });
-
-  wrap.addEventListener('mousedown',  e => { dragging = true; setPos(e.clientX); });
-  document.addEventListener('mouseup',   () => { dragging = false; });
-  document.addEventListener('mousemove', e => { if (dragging) setPos(e.clientX); });
-  wrap.addEventListener('touchstart',  e => { dragging = true; setPos(e.touches[0].clientX); }, { passive: true });
-  document.addEventListener('touchend', () => { dragging = false; });
-  document.addEventListener('touchmove', e => { if (dragging) setPos(e.touches[0].clientX); }, { passive: true });
+  window.addEventListener('load', () => pos(wrap.getBoundingClientRect().left + wrap.offsetWidth * .5));
+  wrap.addEventListener('mousedown', e => { drag = true; pos(e.clientX); });
+  document.addEventListener('mouseup', () => drag = false);
+  document.addEventListener('mousemove', e => { if (drag) pos(e.clientX); });
+  wrap.addEventListener('touchstart', e => { drag = true; pos(e.touches[0].clientX); }, {passive:true});
+  document.addEventListener('touchend', () => drag = false);
+  document.addEventListener('touchmove', e => { if (drag) pos(e.touches[0].clientX); }, {passive:true});
 })();
 
 /* ── Mobile nav ───────────────────────────────────────── */
-const burger = document.getElementById('burger');
-const mLinks = document.querySelector('.nav-links');
-if (burger && mLinks) {
-  burger.addEventListener('click', () => {
-    const open = mLinks.classList.toggle('nav-mobile-open');
-    if (open) {
-      mLinks.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:calc(100% + 0.6rem);left:0;right:0;background:rgba(10,16,10,0.97);backdrop-filter:blur(20px);padding:1.5rem;gap:0.5rem;border-radius:12px;border:1px solid rgba(255,255,255,0.1)';
-    } else {
-      mLinks.style.cssText = '';
-    }
-  });
-}
+document.getElementById('burger').addEventListener('click', () => {
+  document.getElementById('navLinks').classList.toggle('open');
+});
 </script>
 </body>
 </html>
